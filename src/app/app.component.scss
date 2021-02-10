@@ -10,7 +10,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    background-color: slategray;
+    background-color: rgb(99, 108, 117);
 }
 
 .authoriation_panel{
@@ -23,7 +23,11 @@
     border-radius: 10px;
     background-color: rgb(161, 173, 185);
     box-shadow: rgba(0, 0, 0, 0.700) 15px 12px 20px;
-
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+     -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+     transition: all 1s ease;
     form{
         margin: 8% 0 0 0;
     }
@@ -31,25 +35,50 @@
     input{
         height: 32px;
         box-shadow: rgba(0, 0, 0, 0.700) 5px 3px 10px;
-        padding: 0 0 0 5px;
+        padding: 0 0 0 5px;  
     }
-    
+
     input:hover{
         box-shadow: rgba(0, 0, 0, 0.700) 2px 1px 5px;
     }
 
+   
+}
+
+.authoriation_panel:hover{
+    box-shadow: rgb(253, 253, 253) 0px 0px 90px;  
+    -webkit-box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgba(255, 255, 255, 0.808);
+    -moz-box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgb(255, 255, 255, 0.808);
+    box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgb(255, 255, 255, 0.808);
+    transform: scale(1);
+}
+
+.form-check{
+
+    margin: 8px 0 0 0;
+    input{
+        height: 15px;
+        width: 15px;
+        margin: 5px 8px 0 15px;
+    }
+}
+
+.btn_group{
+    width: 100%;
+    text-align: center;
+
+    div{
+        margin: 10px 0 0 0;
+    }
+
     button{
         width: 200px;
-        box-shadow: rgba(0, 0, 0, 0.700) 5px 3px 10px;
+        height: 32px;
+        box-shadow: rgba(0, 0, 0, 0.700) 5px 3px 10px;  
     }
+
     button:hover{
         box-shadow: rgba(0, 0, 0, 0.700) 2px 1px 5px;
     }
-    .btn_group{
-        width: 100%;
-        text-align: center;
-        div{
-            margin: 10px 0 0 0;
-        }
-    }
+
 }
