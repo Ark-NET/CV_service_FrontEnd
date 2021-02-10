@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { CvEditModelComponent } from './components/cv-edit-model/cv-edit-model.component';
 import { CvViewModelComponent } from './components/cv-view-model/cv-view-model.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     CvEditModelComponent,
-    CvViewModelComponent
+    CvViewModelComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
