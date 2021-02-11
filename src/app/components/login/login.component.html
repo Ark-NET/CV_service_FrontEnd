@@ -2,7 +2,7 @@
 
   <div class="authoriation_panel">
 
-    <form>
+   <div class="form">
 
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
@@ -10,7 +10,7 @@
           #exampleinputemail1>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
-
+    
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" #exampleinputpassword1>
@@ -21,27 +21,28 @@
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
       </div>
 
+      <div>{{errorMess}}</div>
+      
       <div class="btn_group">
 
         <div>
           <button type="button" class="btn btn-success"
             (click)="login(exampleinputemail1.value,exampleinputpassword1.value)">Authorization</button>
         </div>
+        
         <div>
           <small class="form-text text-muted">If you not have accoun in our system, push to Registration please</small>
         </div>
+        
         <div>
-
           <button type="button" class="btn btn-primary" (click)="reg()">Registration</button>
-
         </div>
 
       </div>
 
-      <div>{{errorMess}}</div>
-
-    </form>
-
+      
+    </div>
+    
   </div>
-
+  
 </div>

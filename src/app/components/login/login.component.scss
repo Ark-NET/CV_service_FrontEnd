@@ -3,11 +3,20 @@
   padding: 0;
 }
 
+body{
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  max-width: 100%;
+  min-height: 200%;
+  max-height: 200%;
+  overflow: hidden;
+}
 
 #body_div{
-  position: fixed;
+  position: absolute; 
   width: 100%;
-  height: 100%;
+  height:100vh;
   display: flex;
   justify-content: center;
   background-color: rgb(99, 108, 117);
@@ -28,7 +37,7 @@
    -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
    transition: all 1s ease;
-  form{
+  .form{
       margin: 8% 0 0 0;
   }
 
