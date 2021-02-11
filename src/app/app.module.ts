@@ -8,6 +8,7 @@ import { CvEditModelComponent } from './components/cv-edit-model/cv-edit-model.c
 import { CvViewModelComponent } from './components/cv-view-model/cv-view-model.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrationComponent,
     CvEditModelComponent,
     CvViewModelComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
