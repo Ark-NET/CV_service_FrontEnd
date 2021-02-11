@@ -6,13 +6,13 @@
       
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #exampleInputEmail1>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #exampleinputemail1>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
 
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" #exampleInputPassword1>
+        <input type="password" class="form-control" id="exampleInputPassword1" #exampleinputpassword1>
       </div>
 
       <div class="form-group form-check">
@@ -24,7 +24,7 @@
 
         <div>
           <button type="button" class="btn btn-success"
-            (click)=login(exampleInputEmail1.value,exampleInputPassword1.value)>Authorization</button>
+            (click)="login(exampleinputemail1.value,exampleinputpassword1.value)">Authorization</button>
         </div>
         <div>
           <small class="form-text text-muted">If you not have accoun in our system, push to Registration please</small>
