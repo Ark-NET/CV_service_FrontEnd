@@ -3,7 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import {RegistrationComponent} from './components/registration/registration.component';
 
 const routes: Routes = [
-  {path: '', }
+
+  { path: '', pathMatch: 'full', redirectTo: '' },
+
+  { path: '**', redirectTo: '' }
+
 ];
 
 @NgModule({

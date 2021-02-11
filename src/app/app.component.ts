@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import { ValidationService } from "./services/validation.service";
 import { RequestDBService } from "./services/request-db.service";
@@ -12,7 +12,7 @@ import { User } from './models/user';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   errorMess: string = "";
   user = {};
   constructor(
@@ -21,7 +21,17 @@ export class AppComponent {
     private router: Router,
     private storage: LocalStorageService
   ) { }
+  ngOnInit(): void {
+    //если юзер был залогинен - отобразить его резюме без логина.Проверканаличия юзера в локал сторидже
+    // this.router.navigate(['cv-edit-model']);
+  };
+  showeEditeModel(){
 
+  }
+
+  checkLogin(){
+    //проверить залогинен ли юзер
+  }
   login(login: string, password: string) {
 
     if (!this.valid.isEmpty(login) && !this.valid.isEmpty(password)) {
@@ -44,5 +54,10 @@ export class AppComponent {
       this.errorMess = "INVALID";
     }
   }
+
+
+
+
+
 
 }
