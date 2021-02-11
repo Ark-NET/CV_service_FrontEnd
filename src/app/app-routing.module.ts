@@ -6,6 +6,8 @@ const routes: Routes = [
 
   { path: '', pathMatch: 'full', redirectTo: '' },
 
+  { path: 'registartion', component: RegistrationComponent },
+
   { path: '**', redirectTo: '' }
 
 ];
