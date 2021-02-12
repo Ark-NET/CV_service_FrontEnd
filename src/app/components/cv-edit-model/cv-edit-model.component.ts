@@ -10,6 +10,7 @@ export class CvEditModelComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    //функция запрос на получение данных с базы для заполнения формы
   }
 
 }

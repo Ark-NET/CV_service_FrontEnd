@@ -10,10 +10,12 @@ import { User } from '../../models/user';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   errorMess: string = "";
   user = {};
+  CheckMeOut: boolean = false;
   constructor(
     private valid: ValidationService,
     private request: RequestDBService,
@@ -23,27 +25,37 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //если юзер был залогинен - отобразить его резюме без логина.Проверканаличия юзера в локал сторидже
-    // this.router.navigate(['cv-edit-model']);
-  };
-  showeEditeModel(){
 
+    this.editeModelRouter();
+  };
+
+  editeModelRouter() {
+    const check = this.storage.getLocalStorage();
+    if (check != null) {
+      this.router.navigate(['cv-edit-model']);
+    }
   }
 
-  checkLogin(){
-    //проверить залогинен ли юзер
+  checkMeOut(data: object) {
+    if (this.CheckMeOut) {
+      this.storage.setLocalStorage(data);
+    }
+    else {
+      this.storage.deleteLocalStorage();
+    }
   }
 
   login(login: string, password: string) {
+
 
     if (!this.valid.isEmpty(login) && !this.valid.isEmpty(password)) {
       //запрос
       this.request.loginGET().subscribe(
         (data) => {
           if (data.resulte) {
-            this.user = new User(data.user.name, data.user.login);
+            this.user = new User(data.name, data.login, data.id);
+            this.checkMeOut(this.user);
             this.router.navigate(['cv-edit-model']);
-            this.storage.setLocalStorage(this.user);
           }
         },
 
@@ -56,7 +68,8 @@ export class LoginComponent implements OnInit {
       this.errorMess = "INVALID";
     }
   }
-  reg(){
+
+  registrationRouter() {
     this.router.navigate(['registration']);
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-cv-view-model',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CvViewModelComponent implements OnInit {
 
-  constructor() { }
+  id: number;
+    constructor(private activateRoute: ActivatedRoute){
 
+        this.id = activateRoute.snapshot.params['id'];
+    }
   ngOnInit(): void {
+    //функция запроса к бекенду на получение данных юзера по id и заполенние формы без редактирования
   }
 
 }

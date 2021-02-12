@@ -10,45 +10,45 @@
           #exampleinputemail1>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
-    
+
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" #exampleinputpassword1>
       </div>
 
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" [checked] = "CheckMeOut" [(ngModel)]="CheckMeOut">
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
       </div>
 
       <div>{{errorMess}}</div>
-      
+
       <div class="btn_group">
 
         <div>
           <button type="button" class="btn btn-success"
             (click)="login(exampleinputemail1.value,exampleinputpassword1.value)">Authorization</button>
         </div>
-        
+
         <div>
           <small class="form-text text-muted">If you not have accoun in our system, push to Registration please</small>
         </div>
-        
+
         <div>
-          <button type="button" class="btn btn-primary" (click)="reg()">Registration</button>
+          <button type="button" class="btn btn-primary" (click)="registrationRouter()">Registration</button>
         </div>
 
       </div>
 
-      
-       
-     
+
+
+
       <div class="area">G i ena_Coders</div>
     </div>
-    
+
   </div>
-  
-  
+
+
 </div>
 
 

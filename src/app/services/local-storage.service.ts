@@ -15,8 +15,12 @@ export class LocalStorageService {
 
   getLocalStorage(): object {
     var obj = localStorage.getItem(this.key);
-    var value = obj != null ? JSON.parse(obj) : {};
-
+    var value = obj != null ? JSON.parse(obj) : null;
     return value;
   }
+
+  deleteLocalStorage(){
+    localStorage.removeItem(this.key);
+  }
+
 }
