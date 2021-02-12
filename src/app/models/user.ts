@@ -1,11 +1,13 @@
 export class User {
-  public fullName: string;
-  public login: string;
-  public id: number;
 
-  constructor(fullName: string, login: string, id: number) {
-    this.fullName = fullName,
+  public id: number;
+  public login: string;
+  public password: string;
+
+  constructor(id: number, login: string, password: string) {
+
+    this.id = id,
       this.login = login,
-      this.id = id
+      this.password = password
   }
 }
