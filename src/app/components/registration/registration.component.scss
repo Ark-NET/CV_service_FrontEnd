@@ -3,20 +3,33 @@
     padding: 0;
   }
   
+  body{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%;
+    min-height: 200%;
+    max-height: 200%;
+    overflow: hidden;
+  }
   
   #body_div{
+    position: absolute; 
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
-    background-color: rgb(99, 108, 117);
+    background-image: url('../../../img/rustic-brick-wall-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
   }
   
   .authoriation_panel{
-    margin: 5% 0 5% 0;
+    margin: 10% 0 0 0;
     display: flex;
-    width: 700px;
-   
+    width: 500px;
+    height: 400px;
     justify-content: center;
     border: 2px solid black;
     border-radius: 10px;
@@ -28,42 +41,43 @@
     -o-transition: all 1s ease;
      transition: all 1s ease;
     .form{
-        margin: 8% 0 8% 0;
+        margin: 8% 0 0 0;
 
         @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
         .area {
-          margin: 48px 0 0 0;
+          margin: 34px 0 0 20px;
           text-align: right;
           font-size:15px;
           color: rgb(255, 255, 255);
           letter-spacing: -1px;
           font-weight: 300;
           text-transform: uppercase;
-          animation: blur 2s ease-out infinite;
+          animation: blur 3s ease-out infinite;
           text-shadow: 0px 0px 3px #fff, 0px 0px 5px #fff;
         }
     
         @keyframes blur {
           from {
-            text-shadow:0px 0px 5px #fff,
-            0px 0px 10px #fff, 
-            0px 0px 25px #fff,
-            0px 0px 25px #fff,
-            0px 0px 25px #fff,
-            0px 0px 25px #fff,
-            0px 0px 25px #fff,
-            0px 0px 25px #fff,
-            0px 0px 50px #fff,
-            0px 0px 50px #fff,
-            0px 0px 50px #7B96B8,
-            0px 0px 150px #7B96B8,
-            0px 10px 100px #7B96B8,
-            0px 10px 100px #7B96B8,
-            0px 10px 100px #7B96B8,
-            0px 10px 100px #7B96B8,
-            0px -10px 100px #7B96B8,
-            0px -10px 100px #7B96B8;
+            text-shadow:
+            0px 0px 4px #fcd1d1,
+            0px 0px 8px #fcd1d1, 
+            0px 0px 23px #fcd1d1,
+            0px 0px 22px #ffa5a5,
+            0px 0px 22px #ffa5a5,
+            0px 0px 22px #ffa5a5,
+            0px 0px 22px #ffa5a5,
+            0px 0px 22px #ff8b8b,
+            0px 0px 47px #fff,
+            0px 0px 47px #fff,
+            0px 0px 47px #7B96B8,
+            0px 0px 147px #7B96B8,
+            0px 10px 97px #7B96B8,
+            0px 10px 97px #7B96B8,
+            0px 10px 97px #7B96B8,
+            0px 10px 97px #7B96B8,
+            0px -12px 97px #5f8cc4,
+            0px -12px 97px #5f8cc4;
           }
         }
     }
@@ -90,8 +104,7 @@
   }
   
   .form-check{
-    display: flex;
-  justify-content: space-around;
+   
     margin: 8px 0 0 0;
     input{
         height: 15px;
@@ -105,10 +118,7 @@
   .btn_group{
     width: 100%;
     text-align: center;
-  
-    div{
-        margin: 10px 0 0 0;
-    }
+    margin: 23px 0 0 0;
   
     button{
         width: 200px;
