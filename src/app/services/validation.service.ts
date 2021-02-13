@@ -14,7 +14,5 @@ export class ValidationService {
       else return true;
     }
     else return true;
-
-
   }
 }

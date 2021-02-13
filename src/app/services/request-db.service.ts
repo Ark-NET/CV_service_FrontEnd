@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { User } from '../models/user';
 import {
 
   HttpClient,
@@ -35,4 +36,26 @@ export class RequestDBService {
       .get(apiBaseURL, httpOptions)
       .pipe(catchError(this.processError));
   }
+
+  public userGET(id: number): Observable<any> {
+
+    return this.httpClient
+      .get(apiBaseURL + `/${id}`, httpOptions)
+      .pipe(catchError(this.processError));
+  }
+
+  public userUPD(user: User): Observable<any> {
+
+    return this.httpClient
+      .put(apiBaseURL, user, httpOptions)
+      .pipe(catchError(this.processError));
+  }
+
+  public userADD(user: User): Observable<any> {
+
+    return this.httpClient
+      .put(apiBaseURL, user, httpOptions)
+      .pipe(catchError(this.processError));
+  }
+
 }
