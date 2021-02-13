@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from '../../services/local-storage.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cv-edit-model',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cv-edit-model.component.scss']
 })
 export class CvEditModelComponent implements OnInit {
-
-  constructor() { }
+  errorMess: string = "";
+  user = {};
+  constructor(
+    private storage: LocalStorageService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    //функция запрос на получение данных с базы для заполнения формы
   }
 
 }

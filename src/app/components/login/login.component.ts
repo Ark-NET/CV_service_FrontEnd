@@ -4,16 +4,21 @@ import { RequestDBService } from "../../services/request-db.service";
 import { LocalStorageService } from "../../services/local-storage.service";
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
+import { Parser } from '@angular/compiler/src/ml_parser/parser';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   errorMess: string = "";
   user = {};
+  CheckMeOut: boolean = false;
+  inputemail: string = "";
+  inputpassword: string = "";
   constructor(
     private valid: ValidationService,
     private request: RequestDBService,
@@ -23,40 +28,50 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //если юзер был залогинен - отобразить его резюме без логина.Проверканаличия юзера в локал сторидже
-    // this.router.navigate(['cv-edit-model']);
+
+    const check = this.storage.getLocalStorage();
+    if (check != null) {
+      this.inputemail = check.login;
+      this.inputpassword = check.password;
+    }
   };
-  showeEditeModel(){
 
-  }
 
-  checkLogin(){
-    //проверить залогинен ли юзер
+
+  isRemember(data: object) {
+    if (this.CheckMeOut) {
+      this.storage.setLocalStorage(data);
+    }
+    else {
+      this.storage.deleteLocalStorage();
+    }
   }
 
   login(login: string, password: string) {
 
+
     if (!this.valid.isEmpty(login) && !this.valid.isEmpty(password)) {
       //запрос
-      this.request.loginGET().subscribe(
-        (data) => {
-          if (data.resulte) {
-            this.user = new User(data.user.name, data.user.login);
-            this.router.navigate(['cv-edit-model']);
-            this.storage.setLocalStorage(this.user);
-          }
-        },
+      // this.request.loginGET().subscribe(
+      //   (data) => {
+      //     if (data.resulte) {
+      this.user = new User(1, this.inputemail, this.inputpassword);
+      this.isRemember(this.user);
+      this.router.navigate(['edit']);
+      //     }
+      //   },
 
-        (err) => {
-          console.log(err);
-        }
-      );
+      //   (err) => {
+      //     console.log(err);
+      //   }
+      // );
     }
     else {
       this.errorMess = "INVALID";
     }
   }
-  reg(){
+
+  registrationRouter() {
     this.router.navigate(['registration']);
   }
 
