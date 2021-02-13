@@ -1,135 +1,154 @@
 <div id="body_div">
-   <div class="logo_block">
-        <div class="area">G i ena_Code_Dev</div>
-   </div>
+  <div class="logo_block">
+    <div class="area">G i ena_Code_Dev</div>
+  </div>
 
-   <div class="central_content">
-        <div class="authoriation_panel">
+  <div class="central_content">
+    <div class="authoriation_panel">
 
-            <div class="form">
-                <div class="block_input">
-                    <div class="left">
-                        <label for="exampleInputEmail1">First_Last_name*</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
+      <div class="form">
+        <div class="block_input">
+          <div class="left">
+            <label for="exampleInputEmail1">First_Last_name*</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
 
-                    <div class="right">
-                        <label for="exampleInputPassword1">Photo</label>
-                        <input type="file" class="form-control"/>
-                    </div>
-                </div>
-
-                <div class="block_input">
-                    <div >
-                        <label for="exampleInputPassword1">email*</label>
-                        <input type="email" class="form-control" placeholder="example@email.com"/>
-                      </div>
-
-                      <div >
-                        <label for="exampleInputPassword1">mobile phone*</label>
-                        <input type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}" maxlength="12" placeholder="380XXXXXXXXXX"/>
-                      </div>
-
-                      <div >
-                        <label for="exampleInputPassword1">Link</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-                </div>
-<!-------------------------------------------------------------->
-                <div class="block_input">
-                    <div>
-                        <label for="exampleInputPassword1">last job place</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-
-                    <div>
-                        <label for="exampleInputPassword1">Dolzhnost</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-
-                    <div>
-                        <label for="exampleInputPassword1">About</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-                </div>
-
-                <div class="block_input">
-                    <div>
-                        <label for="exampleInputPassword1">start work</label>
-                        <input type="date" class="form-control"/>
-                    </div>
-                    <div>
-                        <label for="exampleInputPassword1">end work</label>
-                        <input type="date" class="form-control"/>
-                    </div>
-
-                    <div>
-                        <button type="button" class="btn btn-primary">Add job place</button>
-                    </div>
-                </div>
-<!--------------------------------------------------------------->
-
-                 <div class="block_input">
-                    <div>
-                        <label for="exampleInputPassword1">Education</label>
-                    <input type="text" class="form-control"/>
-                    </div>
-
-                    <div>
-                        <label for="exampleInputPassword1">Specialization</label>
-                    <input type="text" class="form-control"/>
-                    </div>
-
-                    <div>
-                        <label for="exampleInputPassword1">About</label>
-                        <input type="text" class="form-control"/>
-                    </div>
-                </div>
-
-                <div class="block_input">
-                    <div>
-                        <label for="exampleInputPassword1">start work</label>
-                        <input type="date" class="form-control"/>
-                    </div>
-                    <div>
-                        <label for="exampleInputPassword1">end work</label>
-                        <input type="date" class="form-control"/>
-                    </div>
-
-                    <div>
-                        <button type="button" class="btn btn-primary">Add education place</button>
-                    </div>
-                </div>
-<!---------------------------------------------------------------->
-                    <div class="btn_group">
-                        <button type="button" class="btn btn-primary">Save</button>
-                      </div>
-
-            </div>
-
+          <div class="right">
+            <label for="exampleInputPassword1">Photo</label>
+            <input type="file" class="form-control" />
+          </div>
         </div>
-   </div>
+
+        <div class="block_input">
+          <div>
+            <label for="exampleInputPassword1">email*</label>
+            <input type="email" class="form-control" placeholder="example@email.com" />
+          </div>
+
+          <div>
+            <label for="exampleInputPassword1">mobile phone*</label>
+            <input type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}" maxlength="12"
+              placeholder="380XXXXXXXXXX" />
+          </div>
+
+          <div>
+            <label for="exampleInputPassword1">Link</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+        <!-------------------------------------------------------------->
+        <div *ngFor="let item of user.education"> - вот так разпечатываем массив образования
+          <div>
+            <app-education [name]="item.name" [specialization]="item.specialization" [from_year]="item.from_year"  [to_year]="item.to_year"></app-education>
+          </div>
+        </div>
+
+        <!-- <div *ngFor="let item of user.links"> - вот так разпечатываем массив ссылок
+          <div>
+            <app-link [name]="item.name" [link]="item.link" ></app-link>
+          </div>
+        </div> -->
+
+        <!-- <div *ngFor="let item of user.jods"> - вот так разпечатываем массив работ
+          <div>
+            <app-job [name]="item.name" [work_status]="item.work_status" [from_year]="item.from_year"  [to_year]="item.to_year"></app-job>
+          </div>
+        </div> -->
+
+        <div class="block_input">
+          <div>
+            <label for="exampleInputPassword1">last job place</label>
+            <input type="text" class="form-control" />
+          </div>
+
+          <div>
+            <label for="exampleInputPassword1">Dolzhnost</label>
+            <input type="text" class="form-control" />
+          </div>
+
+          <div>
+            <label for="exampleInputPassword1">About</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+
+        <div class="block_input">
+          <div>
+            <label for="exampleInputPassword1">start work</label>
+            <input type="date" class="form-control" />
+          </div>
+          <div>
+            <label for="exampleInputPassword1">end work</label>
+            <input type="date" class="form-control" />
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-primary">Add job place</button>
+          </div>
+        </div>
+        <!--------------------------------------------------------------->
+
+        <div class="block_input">
+          <div>
+            <label for="exampleInputPassword1">Education</label>
+            <input type="text" class="form-control" />
+          </div>
+
+          <div>
+            <label for="exampleInputPassword1">Specialization</label>
+            <input type="text" class="form-control" />
+          </div>
+
+          <div>
+            <label for="exampleInputPassword1">About</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+
+        <div class="block_input">
+          <div>
+            <label for="exampleInputPassword1">start work</label>
+            <input type="date" class="form-control" />
+          </div>
+          <div>
+            <label for="exampleInputPassword1">end work</label>
+            <input type="date" class="form-control" />
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-primary">Add education place</button>
+          </div>
+        </div>
+        <!---------------------------------------------------------------->
+        <div class="btn_group">
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
 
 
-   <div class="footer_content">
-       <h6>Developers</h6>
-       <div class="developers">
-            <div>
-                <h6>cminskii5@gmail.com</h6>
-                <h6>makskoz81@gmail.com</h6>
-            </div>
-            <div>
-                <h6>onufk1989@gmail.com</h6>
-                <h6>artyr4ik11@gmail.com</h6>
-            </div>
-       </div>
-   </div>
+  <div class="footer_content">
+    <h6>Developers</h6>
+    <div class="developers">
+      <div>
+        <h6>cminskii5@gmail.com</h6>
+        <h6>makskoz81@gmail.com</h6>
+      </div>
+      <div>
+        <h6>onufk1989@gmail.com</h6>
+        <h6>artyr4ik11@gmail.com</h6>
+      </div>
+    </div>
+  </div>
 
 </div>
 
 
 
-  <!-- <div id="body_div">
+<!-- <div id="body_div">
 
 
 

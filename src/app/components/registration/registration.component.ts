@@ -15,11 +15,11 @@ export class RegistrationComponent implements OnInit {
   }
 
 
-registration_User(){
-  this.router.navigate(['edit_page']);
-}
+  registrationUser() {
+    this.router.navigate(['edit_page']);
+  }
 
-  cancel(){
+  cancelActio() {
     this.router.navigate(['']);
   }
 }

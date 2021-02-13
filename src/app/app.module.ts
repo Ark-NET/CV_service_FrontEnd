@@ -10,6 +10,9 @@ import { CvViewModelComponent } from './components/cv-view-model/cv-view-model.c
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
+import { JobComponent } from './components/job/job.component';
+import { EducationComponent } from './components/education/education.component';
+import { LinkComponent } from './components/link/link.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { LoginComponent } from './components/login/login.component';
     CvEditModelComponent,
     CvViewModelComponent,
     ErrorPageComponent,
-    LoginComponent
+    LoginComponent,
+    JobComponent,
+    EducationComponent,
+    LinkComponent
 
   ],
   imports: [

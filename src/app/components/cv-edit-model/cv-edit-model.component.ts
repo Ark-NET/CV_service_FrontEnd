@@ -9,7 +9,14 @@ import { Router } from '@angular/router';
 })
 export class CvEditModelComponent implements OnInit {
   errorMess: string = "";
-  user = {};
+  user = {
+    education: [{ "id": 1, "name": "Step", "specialization": "full dev steck", "from_year": '1991-01-01', "to_year": "2020-01-01" }],
+    links: [{
+      "id": 1, "name": "git", "link": "https://jhksdfjghsdfgjfd"
+    }],
+    jods: [{ "id": 1, "work_status": "Boss", "from_year": '1992-01-01', "to_year": "2022-01-01" }]
+  };
+
   constructor(
     private storage: LocalStorageService,
     private router: Router
