@@ -30,10 +30,10 @@ export class RequestDBService {
     return throwError(error);
   };
 
-  public loginGET(): Observable<any> {
+  public loginPOST(user: any): Observable<any> {
 
     return this.httpClient
-      .get(apiBaseURL, httpOptions)
+      .post(apiBaseURL, user, httpOptions)
       .pipe(catchError(this.processError));
   }
 
@@ -54,7 +54,7 @@ export class RequestDBService {
   public userADD(user: User): Observable<any> {
 
     return this.httpClient
-      .put(apiBaseURL, user, httpOptions)
+      .post(apiBaseURL, user, httpOptions)
       .pipe(catchError(this.processError));
   }
 

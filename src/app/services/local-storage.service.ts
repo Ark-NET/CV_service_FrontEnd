@@ -9,7 +9,7 @@ export class LocalStorageService {
   key: string = "CV";
   constructor() { }
 
-  setLocalStorage(user: object) {
+  setLocalStorage(user: any) {
     const value = JSON.stringify(user);
     localStorage.setItem(this.key, value);
   }

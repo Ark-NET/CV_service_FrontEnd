@@ -31,8 +31,7 @@ export class LoginComponent implements OnInit {
 
     const check = this.storage.getLocalStorage();
     if (check != null) {
-      this.inputemail = check.login;
-      this.inputpassword = check.password;
+      this.inputemail = check.email;
     }
   };
 
@@ -51,13 +50,19 @@ export class LoginComponent implements OnInit {
 
 
     if (!this.valid.isEmpty(login) && !this.valid.isEmpty(password)) {
-      //запрос
-      // this.request.loginGET().subscribe(
-      //   (data) => {
-      //     if (data.resulte) {
-      this.user = new User(1, this.inputemail, this.inputpassword);
+
+      this.user = { "email": this.inputemail, "id": 1 };
       this.isRemember(this.user);
       this.router.navigate(['edit']);
+      // this.request.loginPOST(this.user).subscribe(
+      //   (data) => {
+      //     if (data.result) {
+      //       this.user = { "email": this.inputemail,"id":data.result.id };
+      //       this.isRemember(this.user);
+      //       this.router.navigate(['edit']);
+      //     }
+      //     else {
+      //       this.errorMess = "Incorrect login or/and password ";
       //     }
       //   },
 
@@ -67,7 +72,7 @@ export class LoginComponent implements OnInit {
       // );
     }
     else {
-      this.errorMess = "INVALID";
+      this.errorMess = "Fields Email address and Password cannot be empty";
     }
   }
 

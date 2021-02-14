@@ -1,13 +1,19 @@
 export class User {
 
   public id: number;
-  public login: string;
+  public email: string;
   public password: string;
+  public education: Array<any>;
+  public links: Array<any>;
+  public jods: Array<any>;
 
-  constructor(id: number, login: string, password: string) {
+  constructor() {
 
-    this.id = id,
-      this.login = login,
-      this.password = password
+    this.id = -1,
+      this.email = "",
+      this.password = "",
+      this.education = [],
+      this.links = [],
+      this.jods = []
   }
 }
