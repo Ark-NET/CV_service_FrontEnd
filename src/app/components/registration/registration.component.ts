@@ -16,7 +16,7 @@ export class RegistrationComponent implements OnInit {
 
 
   registrationUser() {
-    this.router.navigate(['edit_page']);
+    this.router.navigate(['edit']);
   }
 
   cancelActio() {

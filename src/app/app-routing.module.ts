@@ -13,8 +13,6 @@ const routes: Routes = [
   { path: 'edit', component: CvEditModelComponent },
   { path: 'view/:id', component: CvViewModelComponent },
 
-  { path: 'edit_page', component: CvEditModelComponent},
-
   { path: '**', redirectTo: '' }
 ];
 
