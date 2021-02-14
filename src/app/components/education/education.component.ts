@@ -7,10 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class EducationComponent implements OnInit {
 
-  @Input() name: string = "";
-  @Input() specialization: string = "";
-  @Input() from_year: string = "";
-  @Input() to_year: string = "";
+  @Input() education:any ={};
   constructor() { }
 
   ngOnInit(): void {

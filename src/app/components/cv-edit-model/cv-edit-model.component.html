@@ -37,23 +37,23 @@
           </div>
         </div>
         <!-------------------------------------------------------------->
-        <div *ngFor="let item of user.education"> - вот так разпечатываем массив образования
+        <!-- <div *ngFor="let item of user.education"> - вот так разпечатываем массив образования
           <div>
-            <app-education [name]="item.name" [specialization]="item.specialization" [from_year]="item.from_year"  [to_year]="item.to_year"></app-education>
+            <app-education [education]="item"></app-education>
           </div>
-        </div>
+        </div> -->
 
         <!-- <div *ngFor="let item of user.links"> - вот так разпечатываем массив ссылок
           <div>
-            <app-link [name]="item.name" [link]="item.link" ></app-link>
+            <app-link [links]="item"></app-link>
           </div>
         </div> -->
 
-        <!-- <div *ngFor="let item of user.jods"> - вот так разпечатываем массив работ
+        <div *ngFor="let item of user.jods"> - вот так разпечатываем массив работ
           <div>
-            <app-job [name]="item.name" [work_status]="item.work_status" [from_year]="item.from_year"  [to_year]="item.to_year"></app-job>
+            <app-job [jods]="item"></app-job>
           </div>
-        </div> -->
+        </div>
 
         <div class="block_input">
           <div>
@@ -140,7 +140,7 @@
                     </div>
                 </div>
 <!---------------------------------------------------------------->
-                    <div class="btn_group"> 
+                    <div class="btn_group">
                         <button type="button" class="btn btn-primary">Save</button>
                       </div>
 >>>>>>> c2c6df420d6cef0082fe55ad6356e6183c9ffe1f

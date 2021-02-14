@@ -14,7 +14,7 @@ export class CvEditModelComponent implements OnInit {
     links: [{
       "id": 1, "name": "git", "link": "https://jhksdfjghsdfgjfd"
     }],
-    jods: [{ "id": 1, "work_status": "Boss", "from_year": '1992-01-01', "to_year": "2022-01-01" }]
+    jods: [{ "id": 1, "work_status": "Boss", "from_year": '1992-01-01', "to_year": "2022-01-01","about":"ничего не делаю и получаю премии" }]
   };
 
   constructor(
