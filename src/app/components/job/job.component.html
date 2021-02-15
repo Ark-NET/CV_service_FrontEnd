@@ -1,8 +1,8 @@
-<div>
-  <!-- блок работы
-  название работы, дата от и до, должность, обязаности-->
-  <!-- <div>{{jods.work_status}}</div>
-  <div>{{jods.from_year}}</div>
-  <div>{{jods.to_year}}</div>
-  <div>{{jods.about}}</div> -->
+<div *ngFor="let item of user.jods">
+  <div>
+    <div>{{item.work_status}}</div>
+    <div>{{item.from_year}}</div>
+    <div>{{item.to_year}}</div>
+    <div>{{item.about}}</div>
+  </div>
 </div>

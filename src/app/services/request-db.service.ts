@@ -33,7 +33,7 @@ export class RequestDBService {
   public loginPOST(user: any): Observable<any> {
 
     return this.httpClient
-      .post(apiBaseURL, user, httpOptions)
+      .post(apiBaseURL+"/loging", user, httpOptions)
       .pipe(catchError(this.processError));
   }
 

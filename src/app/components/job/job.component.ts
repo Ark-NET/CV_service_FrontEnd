@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class JobComponent implements OnInit {
 
-  @Input() jods: any = {};
+  @Input() user: any = {};
   constructor() { }
 
   ngOnInit(): void {
