@@ -1,4 +1,10 @@
-<div>
-  <!-- блок ссылки - название ссылки и ссылка
-  поля - два текстовых поля -->
+<div *ngIf="user.links.length<=0">
+  <input type="text" />
+  <input type="text" />
+</div>
+
+<div *ngFor="let item of user.links">
+
+  <input type="text" value={{item.name}}/>
+  <input type="text" value={{item.link}}/>
 </div>

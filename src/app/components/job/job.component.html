@@ -1,8 +1,16 @@
+<div *ngIf="user.jods.length<=0">
+  <input type="text" />
+  <input type="text" />
+  <input type="date" />
+  <input type="date"/>
+  <input type="text" />
+</div>
+
 <div *ngFor="let item of user.jods">
-  <div>
-    <div>{{item.work_status}}</div>
-    <div>{{item.from_year}}</div>
-    <div>{{item.to_year}}</div>
-    <div>{{item.about}}</div>
-  </div>
+
+  <input type="text" value={{item.job}}/>
+  <input type="text" value={{item.work_status}}/>
+  <input type="date" value={{item.from_year}} />
+  <input type="date" value={{item.to_year}}/>
+  <input type="text" value={{item.about}}/>
 </div>

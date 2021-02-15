@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from "../../models/user"
 
 @Component({
   selector: 'app-education',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class EducationComponent implements OnInit {
 
-  @Input() education:any ={};
+  @Input() user: User = new User();
   constructor() { }
 
   ngOnInit(): void {

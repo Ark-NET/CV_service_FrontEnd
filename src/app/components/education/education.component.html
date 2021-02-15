@@ -1,4 +1,16 @@
-<div>
-  <!-- блок образования
-  название заведение, специализация, дата от и до-->
+<div *ngIf="user.education.length<=0">
+  <input type="text" />
+  <input type="text" />
+  <input type="date" />
+  <input type="date"/>
+  <input type="text" />
+</div>
+
+<div *ngFor="let item of user.education">
+
+  <input type="text" value={{item.name}}/>
+  <input type="text" value={{item.specialization}}/>
+  <input type="date" value={{item.from_year}} />
+  <input type="date" value={{item.to_year}}/>
+  <input type="text" value={{item.about}}/>
 </div>

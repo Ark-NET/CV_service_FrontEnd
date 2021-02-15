@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {User} from "../../models/user"
 
 @Component({
   selector: 'app-link',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LinkComponent implements OnInit {
 
-  @Input() links: any = {};
+  @Input() user: User = new User();
   constructor() { }
 
   ngOnInit(): void {

@@ -22,7 +22,7 @@
         <div class="block_input">
           <div>
             <label for="exampleInputPassword1">email*</label>
-            <input type="email" class="form-control" placeholder="example@email.com" />
+            <input type="email" class="form-control" placeholder="example@email.com"/>
           </div>
 
           <div>
@@ -40,6 +40,14 @@
 
         <div>
           <app-job [user]="user"></app-job>
+        </div>
+
+        <div>
+          <app-education [user]="user"></app-education>
+        </div>
+
+        <div>
+          <app-link [user]="user"></app-link>
         </div>
 
         <div class="block_input">

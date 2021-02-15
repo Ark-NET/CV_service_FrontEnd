@@ -15,7 +15,6 @@ import { Parser } from '@angular/compiler/src/ml_parser/parser';
 export class LoginComponent implements OnInit {
 
   errorMess: string = "";
-  user = {};
   CheckMeOut: boolean = false;
   inputemail: string = "";
   inputpassword: string = "";
@@ -51,14 +50,12 @@ export class LoginComponent implements OnInit {
 
     if (!this.valid.isEmpty(login) && !this.valid.isEmpty(password)) {
 
-      this.user = { "email": this.inputemail, "id": 1 };
-      this.isRemember(this.user);
+      this.isRemember({ "email": this.inputemail, "id": 1 });
       this.router.navigate(['edit']);
       // this.request.loginPOST(this.user).subscribe(
       //   (data) => {
       //     if (data.result) {
-      //       this.user = { "email": this.inputemail,"id":data.result.id };
-      //       this.isRemember(this.user);
+      //       this.isRemember("email": this.inputemail,"id":data.result.id);
       //       this.router.navigate(['edit']);
       //     }
       //     else {
