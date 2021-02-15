@@ -28,7 +28,12 @@ export class CvEditModelComponent implements OnInit {
     const localUser = this.storage.getLocalStorage();
     this.request.userGET(localUser.id).subscribe((data) => {
       if (data) {
-        this.user = data
+
+        this.user.setAllUserData(
+          data.id, data.full_name, data.login,
+          data.password, data.email, data.phone,
+          data.education, data.links, data.jods,
+          data.face);
       }
     },
       (err) => {

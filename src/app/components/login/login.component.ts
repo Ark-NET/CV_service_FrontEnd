@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
   login(login: string, password: string) {
 
 
-    if (!this.valid.isEmpty(login) && !this.valid.isEmpty(password)) {
+    if (this.formValidation(login,password)) {
 
       this.isRemember({ "email": this.inputemail, "id": 1 });
       this.router.navigate(['edit']);
@@ -75,6 +75,11 @@ export class LoginComponent implements OnInit {
 
   registrationRouter() {
     this.router.navigate(['registration']);
+  }
+
+  formValidation(login: string, password: string): boolean {
+    if (!this.valid.isEmpty(login) && !this.valid.isEmpty(password)) return true;
+    else return false
   }
 
 }
