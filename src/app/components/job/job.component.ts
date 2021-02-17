@@ -45,6 +45,7 @@ export class JobComponent implements OnInit {
       this.from_year = "";
       this.to_year = "";
       this.about = "";
+      this.errorMess="";
     }
     else{
       this.errorMess="Fields cannot be empty: JOB, STATUS, FROM ";

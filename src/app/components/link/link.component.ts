@@ -24,6 +24,7 @@ export class LinkComponent implements OnInit {
       this.user.links.push({ "id": 0, "name": this.name, "link": this.link })
       this.name = "";
       this.link = "";
+      this.errorMess="";
     }
     else {
       this.errorMess = "Fill in all fields to add a link";

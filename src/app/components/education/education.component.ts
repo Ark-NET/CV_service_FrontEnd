@@ -46,6 +46,7 @@ export class EducationComponent implements OnInit {
       this.from_year = "";
       this.to_year = "";
       this.about = "";
+      this.errorMess="";
     }
     else {
       this.errorMess = "Fields cannot be empty: name, specialization, FROM ";
