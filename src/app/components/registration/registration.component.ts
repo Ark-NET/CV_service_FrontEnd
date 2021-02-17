@@ -11,7 +11,13 @@ import { ValidationService } from "../../services/validation.service"
 })
 export class RegistrationComponent implements OnInit {
 
-  errorMess: string = "";
+  errorMess = "";
+
+  full_name = ""
+  login = ""
+  password = ""
+  email = ""
+  phone = ""
   constructor(
     private router: Router,
     private request: RequestDBService,
@@ -25,14 +31,14 @@ export class RegistrationComponent implements OnInit {
 
   registrationUser() {
     if (this.formValidation()) {
+
       const user = new User();
-      user.setRegistartionUserData("full_name: string", "login: string",
-        "password: string", "email: string", "phone: string");
+      user.setRegistartionUserData(this.full_name, this.login, this.password, this.email, this.phone);
 
       this.request.userADD(user).subscribe((data) => {
 
         if (data.result) {
-          this.storage.setLocalStorage({ "email": "sdfsd@sdf.sdf", "id": data.id });
+          this.storage.setLocalStorage({ "id": data.id, "login": data.login, "password": data.password });
         }
         else {
           this.errorMess = "Error";
@@ -50,8 +56,15 @@ export class RegistrationComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  formValidation(): boolean {
+  private formValidation(): boolean {
+    const arrValidationFilde: Array<boolean> = []
 
-    return false;
+    arrValidationFilde.push(this.validation.isEmpty(this.full_name));
+    arrValidationFilde.push(this.validation.isEmpty(this.login));
+    arrValidationFilde.push(this.validation.isEmpty(this.phone));
+    arrValidationFilde.push(this.validation.isEmpty(this.password));
+    arrValidationFilde.push(this.validation.isEmpty(this.email));
+
+    return arrValidationFilde.indexOf(true) >= 0 ? false : true;
   }
 }

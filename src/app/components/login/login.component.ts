@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   errorMess: string = "";
   CheckMeOut: boolean = false;
-  inputemail: string = "";
+  inputlogin: string = "";
   inputpassword: string = "";
   constructor(
     private valid: ValidationService,
@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
 
     const check = this.storage.getLocalStorage();
     if (check != null) {
-      this.inputemail = check.email;
+      this.inputlogin = check.login;
+      this.inputpassword = check.password;
     }
   };
 
@@ -52,14 +53,14 @@ export class LoginComponent implements OnInit {
 
     if (this.formValidation(login, password)) {
 
-      this.isRemember({ "id": 1, "email": this.inputemail, "password": this.inputpassword });
+      this.isRemember({ "id": 1, "login": this.inputlogin, "password": this.inputpassword });
       this.router.navigate(['edit']);
 
-      this.request.loginPOST({ "id": 0, "email": this.inputemail, "password": this.inputpassword }).subscribe(
+      this.request.loginPOST({ "id": 0, "email": this.inputlogin, "password": this.inputpassword }).subscribe(
         (data) => {
 
           if (data.result) {
-            this.isRemember({ "id": data.id, "email": this.inputemail, "password": this.inputpassword }); //нужно прикрутить JWT
+            this.isRemember({ "id": data.id, "email": this.inputlogin, "password": this.inputpassword }); //нужно прикрутить JWT
             this.router.navigate(['edit']);
           }
           else {

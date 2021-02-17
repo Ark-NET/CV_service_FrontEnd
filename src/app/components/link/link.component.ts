@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from "../../models/user"
+import { ValidationService } from "../../services/validation.service"
 
 @Component({
   selector: 'app-link',
@@ -9,17 +10,24 @@ import { User } from "../../models/user"
 export class LinkComponent implements OnInit {
 
   @Input() user: User = new User();
-  name: string = "";
-  link: string = "";
-  constructor() { }
+  errorMess = "";
+  name = "";
+  link = "";
+
+  constructor(private validation: ValidationService) { }
 
   ngOnInit(): void {
   }
 
   addLink() {
-    this.user.links.push({ "id": 0, "name": this.name, "link": this.link })
-    this.name = "";
-    this.link = "";
+    if (!this.validation.isEmpty(this.name) && !this.validation.isEmpty(this.link)) {
+      this.user.links.push({ "id": 0, "name": this.name, "link": this.link })
+      this.name = "";
+      this.link = "";
+    }
+    else {
+      this.errorMess = "Fill in all fields to add a link";
+    }
   }
 
   deleteLink(item: any) {

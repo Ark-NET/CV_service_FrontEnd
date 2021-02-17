@@ -1,16 +1,17 @@
 <div *ngFor="let item of user.education">
-  <input type="text" value={{item.name}} [(ngModel)]="item.name"/>
-  <input type="text" value={{item.specialization}} [(ngModel)]="item.specialization"/>
-  <input type="date" value={{item.from_year}} [(ngModel)]="item.from_year"/>
-  <input type="date" value={{item.to_year}} [(ngModel)]="item.to_year"/>
-  <input type="text" value={{item.about}} [(ngModel)]="item.about"/>
+  <input type="text" value={{item.name}} [(ngModel)]="item.name" />
+  <input type="text" value={{item.specialization}} [(ngModel)]="item.specialization" />
+  <input type="date" value={{item.from_year}} [(ngModel)]="item.from_year" />
+  <input type="date" value={{item.to_year}} [(ngModel)]="item.to_year" />
+  <input type="text" value={{item.about}} [(ngModel)]="item.about" />
   <input type="button" (click)="deleteEducation(item)" value="DELETE" />
 </div>
 <div>
-  <input type="text" [(ngModel)]="name"/>
-  <input type="text" [(ngModel)]="specialization"/>
-  <input type="date" [(ngModel)]="from_year"/>
-  <input type="date" [(ngModel)]="to_year"/>
-  <input type="text" [(ngModel)]="about"/>
+  <input type="text" [(ngModel)]="name" />
+  <input type="text" [(ngModel)]="specialization" />
+  <input type="date" [(ngModel)]="from_year" />
+  <input type="date" [(ngModel)]="to_year" />
+  <input type="text" [(ngModel)]="about" />
   <input type="button" (click)="addEducation()" value="ADD" />
+  <div>{{errorMess}}</div>
 </div>
