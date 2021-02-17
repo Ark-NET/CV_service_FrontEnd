@@ -14,7 +14,7 @@ export class LocalStorageService {
     localStorage.setItem(this.key, value);
   }
 
-  getLocalStorage(): User {
+  getLocalStorage(): any {
     var obj = localStorage.getItem(this.key);
     var value = obj != null ? JSON.parse(obj) : null;
     return value;

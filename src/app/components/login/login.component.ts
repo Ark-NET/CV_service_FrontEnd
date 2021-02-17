@@ -36,26 +36,29 @@ export class LoginComponent implements OnInit {
 
 
 
-  isRemember(data: object) {
+  isRemember(data: any) {
     if (this.CheckMeOut) {
+      data.rem = true;
       this.storage.setLocalStorage(data);
     }
     else {
-      this.storage.deleteLocalStorage();
+      data.rem = false;
+      this.storage.setLocalStorage(data);
+      // this.storage.deleteLocalStorage();
     }
   }
 
   login(login: string, password: string) {
 
 
-    if (this.formValidation(login,password)) {
+    if (this.formValidation(login, password)) {
 
-      this.isRemember({ "email": this.inputemail, "id": 1 });
+      this.isRemember({ "id": 1, "email": this.inputemail, "password": this.inputpassword });
       this.router.navigate(['edit']);
       // this.request.loginPOST(this.user).subscribe(
       //   (data) => {
       //     if (data.result) {
-      //       this.isRemember("email": this.inputemail,"id":data.result.id);
+      //       this.isRemember({ "id": 1, "email": this.inputemail, "password": this.inputpassword }); //нужно прикрутить JWT
       //       this.router.navigate(['edit']);
       //     }
       //     else {

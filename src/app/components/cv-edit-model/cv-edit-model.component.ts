@@ -19,7 +19,7 @@ export class CvEditModelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.loadUser();
+    this.loadUser();
 
     this.user.setTESTdata();
   }
@@ -49,4 +49,12 @@ export class CvEditModelComponent implements OnInit {
     console.dir(this.user)
   }
 
+  loguot(){
+    const localUser = this.storage.getLocalStorage();
+
+    if(localUser.rem ==false){
+      this.storage.deleteLocalStorage();
+    }
+    this.router.navigate(["/loging"])
+  }
 }
