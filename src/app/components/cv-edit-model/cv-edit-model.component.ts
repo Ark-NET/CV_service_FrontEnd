@@ -12,6 +12,8 @@ import { User } from 'src/app/models/user';
 export class CvEditModelComponent implements OnInit {
   errorMess: string = "";
   user: User = new User();
+  files: File[] = [];
+
   constructor(
     private storage: LocalStorageService,
     private router: Router,
@@ -47,8 +49,45 @@ export class CvEditModelComponent implements OnInit {
     else this.router.navigate(["/loging"])
   };
 
-  saveUser() {
+  onSelect(event: any) {
+    this.onRemove(event);
+    this.files.push(...event.addedFiles);
 
+    this.readFile(this.files[0]).then(fileContents => {
+      this.user.face = fileContents as string;
+      // console.log(fileContents);
+    })
+  }
+
+  onRemove(event: any) {
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
+
+   readFile(file: File): Promise<string | ArrayBuffer> {
+    return new Promise<string | ArrayBuffer>((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = e => {
+        return resolve((e.target as FileReader).result as ArrayBuffer);
+      };
+
+      reader.onerror = e => {
+        console.error(`FileReader failed on file ${file.name}.`);
+        return reject(null);
+      };
+
+      if (!file) {
+        console.error('No file to read.');
+        return reject(null);
+      }
+
+      reader.readAsDataURL(file);
+    });
+  }
+
+  saveUser() {
+    console.dir(this.files)
     console.dir(this.user)
   }
 

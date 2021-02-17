@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { JobComponent } from './components/job/job.component';
 import { EducationComponent } from './components/education/education.component';
 import { LinkComponent } from './components/link/link.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LinkComponent } from './components/link/link.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent]
