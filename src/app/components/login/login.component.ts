@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from "../../services/validation.service";
-import { RequestDBService } from "../../services/request-db.service";
+import { RequestDBService } from "../../services/httpClient";
 import { LocalStorageService } from "../../services/local-storage.service";
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
@@ -54,21 +54,23 @@ export class LoginComponent implements OnInit {
 
       this.isRemember({ "id": 1, "email": this.inputemail, "password": this.inputpassword });
       this.router.navigate(['edit']);
-      // this.request.loginPOST(this.user).subscribe(
-      //   (data) => {
-      //     if (data.result) {
-      //       this.isRemember({ "id": 1, "email": this.inputemail, "password": this.inputpassword }); //нужно прикрутить JWT
-      //       this.router.navigate(['edit']);
-      //     }
-      //     else {
-      //       this.errorMess = "Incorrect login or/and password ";
-      //     }
-      //   },
 
-      //   (err) => {
-      //     console.log(err);
-      //   }
-      // );
+      this.request.loginPOST({ "id": 0, "email": this.inputemail, "password": this.inputpassword }).subscribe(
+        (data) => {
+
+          if (data.result) {
+            this.isRemember({ "id": data.id, "email": this.inputemail, "password": this.inputpassword }); //нужно прикрутить JWT
+            this.router.navigate(['edit']);
+          }
+          else {
+            this.errorMess = "Incorrect login or/and password ";
+          }
+        },
+
+        (err) => {
+          console.log(err);
+        }
+      );
     }
     else {
       this.errorMess = "Fields Email address and Password cannot be empty";

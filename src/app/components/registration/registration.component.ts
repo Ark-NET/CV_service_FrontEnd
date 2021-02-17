@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RequestDBService } from "../../services/request-db.service"
+import { RequestDBService } from "../../services/httpClient"
 import { User } from "../../models/user";
 import { LocalStorageService } from "../../services/local-storage.service"
 import { ValidationService } from "../../services/validation.service"

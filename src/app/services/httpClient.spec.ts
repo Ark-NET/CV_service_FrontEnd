@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RequestDBService } from './request-db.service';
+import { RequestDBService } from './httpClient';
 
 describe('RequestDBService', () => {
   let service: RequestDBService;

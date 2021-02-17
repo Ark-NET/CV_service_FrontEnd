@@ -11,19 +11,18 @@ import {
 } from '@angular/common/http';
 
 
-const apiBaseURL = 'http://localhost:5000';
-
-const httpOptions = {
-
-  headers: new HttpHeaders({ Accept: 'application/json' })
-
-};
-
 @Injectable({
   providedIn: 'root'
 })
 export class RequestDBService {
 
+  private apiBaseURL = 'http://localhost:5000';
+
+  private httpOptions = {
+
+    headers: new HttpHeaders({ Accept: 'application/json' })
+
+  };
   constructor(private httpClient: HttpClient) { };
 
   private processError(error: HttpErrorResponse) {
@@ -32,30 +31,22 @@ export class RequestDBService {
 
   public loginPOST(user: any): Observable<any> {
 
-    return this.httpClient
-      .post(apiBaseURL+"/loging", user, httpOptions)
-      .pipe(catchError(this.processError));
+    return this.httpClient.post(this.apiBaseURL + "/loging", user, this.httpOptions).pipe(catchError(this.processError));
   }
 
   public userGET(id: number): Observable<any> {
 
-    return this.httpClient
-      .get(apiBaseURL + `/${id}`, httpOptions)
-      .pipe(catchError(this.processError));
+    return this.httpClient.get(this.apiBaseURL + `/${id}`, this.httpOptions).pipe(catchError(this.processError));
   }
 
   public userUPD(user: User): Observable<any> {
 
-    return this.httpClient
-      .put(apiBaseURL, user, httpOptions)
-      .pipe(catchError(this.processError));
+    return this.httpClient.put(this.apiBaseURL, user, this.httpOptions).pipe(catchError(this.processError));
   }
 
   public userADD(user: User): Observable<any> {
 
-    return this.httpClient
-      .post(apiBaseURL, user, httpOptions)
-      .pipe(catchError(this.processError));
+    return this.httpClient.post(this.apiBaseURL, user, this.httpOptions).pipe(catchError(this.processError));
   }
 
 }

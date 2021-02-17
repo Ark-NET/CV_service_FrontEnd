@@ -8,10 +8,10 @@ export class User {
   public password: string;
   public email: string;
   public phone: string;
-  public face?: Array<Byte>;
+  public face: string;
   public education: Array<any>;
   public links: Array<any>;
-  public jods: Array<any>;
+  public jobs: Array<any>;
 
   constructor() {
 
@@ -21,10 +21,10 @@ export class User {
     this.password = "";
     this.email = "";
     this.phone = "";
-    this.face = [];
+    this.face = "";
     this.education = [];
     this.links = [];
-    this.jods = [];
+    this.jobs = [];
   }
 
   setTESTdata() {//тестовые данные
@@ -35,18 +35,18 @@ export class User {
     this.password = "1234567890";
     this.email = "test@email.com";
     this.phone = "123123123123";
-    this.face = [];
+    this.face = "";
     this.education = [{ "id": 1, "name": "Step", "specialization": "full dev steck", "from_year": "1991-01-01", "to_year": "2020-01-01", "about": "test" }]
     //this.links=[];
-    this.links = [{ "id": 1, "name": "git", "link": "https://jhksdfjghsdfgjfd" },{ "id": 2, "name": "git2", "link": "https://jhksdfjghsdfgjfd" }]
-    this.jods = [{ "id": 1, "job": 'ServiseCAr', "work_status": 'Developer', "from_year": "2011-02-15", "to_year": null, "about": 'big DATABASE', "user_id": 1 }];
+    this.links = [{ "id": 1, "name": "git", "link": "https://jhksdfjghsdfgjfd" }, { "id": 2, "name": "git2", "link": "https://jhksdfjghsdfgjfd" }]
+    this.jobs = [{ "id": 1, "job": 'ServiseCAr', "work_status": 'Developer', "from_year": "2011-02-15", "to_year": null, "about": 'big DATABASE', "user_id": 1 }];
   }
 
   setAllUserData(
     id: number, full_name: string, login: string,
     password: string, email: string, phone: string,
     education: Array<any>, links: Array<any>, jods: Array<any>,
-    face?: Array<Byte>) {
+    face: string) {
 
     this.id = id;
     this.full_name = full_name;
@@ -54,14 +54,10 @@ export class User {
     this.password = password;
     this.email = email;
     this.phone = phone;
-    if(face!=null){
-
-      this.face = face;
-    }
-    else this.face=face
+    this.face = face
     this.education = education;
     this.links = links;
-    this.jods = jods;
+    this.jobs = jods;
   }
 
   setRegistartionUserData(

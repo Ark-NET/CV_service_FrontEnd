@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../../services/local-storage.service'
 import { Router } from '@angular/router';
-import { RequestDBService } from "../../services/request-db.service";
+import { RequestDBService } from "../../services/httpClient";
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -25,22 +25,25 @@ export class CvEditModelComponent implements OnInit {
   }
 
   loadUser() {
-    const localUser = this.storage.getLocalStorage();
-    if(localUser!=null){
-    this.request.userGET(localUser.id).subscribe((data) => {
-      if (data) {
 
-        this.user.setAllUserData(
-          data.id, data.full_name, data.login,
-          data.password, data.email, data.phone,
-          data.education, data.links, data.jods,
-          data.face);
-      }
-    },
-      (err) => {
-        console.log(err);
-      }
-    )}
+    const localUser = this.storage.getLocalStorage();
+    if (localUser != null) {
+
+      this.request.userGET(localUser.id).subscribe((data) => {
+        if (data) {
+
+          this.user.setAllUserData(
+            data.id, data.full_name, data.login,
+            data.password, data.email, data.phone,
+            data.education, data.links, data.jods,
+            data.face);
+        }
+      },
+        (err) => {
+          console.log(err);
+        }
+      )
+    }
     else this.router.navigate(["/loging"])
   };
 
@@ -49,10 +52,10 @@ export class CvEditModelComponent implements OnInit {
     console.dir(this.user)
   }
 
-  loguot(){
+  loguot() {
     const localUser = this.storage.getLocalStorage();
 
-    if(localUser.rem ==false){
+    if (localUser.rem == false) {
       this.storage.deleteLocalStorage();
     }
     this.router.navigate(["/loging"])
