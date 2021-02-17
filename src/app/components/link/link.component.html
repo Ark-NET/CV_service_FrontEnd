@@ -1,10 +1,10 @@
-<div *ngIf="user.links.length<=0">
-  <input type="text" />
-  <input type="text" />
-</div>
-
 <div *ngFor="let item of user.links">
-
-  <input type="text" value={{item.name}}/>
-  <input type="text" value={{item.link}}/>
+  <input type="text" value={{item.name}} [(ngModel)]="item.name" />
+  <input type="text" value={{item.link}} [(ngModel)]="item.link" />
+  <input type="button" (click)="deleteLink(item)" value="DELETE" />
+</div>
+<div>
+  <input type="text" [(ngModel)]="name" />
+  <input type="text" [(ngModel)]="link" />
+  <input type="button" (click)="addLink()" value="ADD" />
 </div>

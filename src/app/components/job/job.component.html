@@ -1,16 +1,17 @@
-<div *ngIf="user.jods.length<=0">
-  <input type="text" />
-  <input type="text" />
-  <input type="date" />
-  <input type="date"/>
-  <input type="text" />
-</div>
 
 <div *ngFor="let item of user.jods">
-
-  <input type="text" value={{item.job}}/>
-  <input type="text" value={{item.work_status}}/>
-  <input type="date" value={{item.from_year}} />
-  <input type="date" value={{item.to_year}}/>
-  <input type="text" value={{item.about}}/>
+  <input type="text" value={{item.job}} [(ngModel)]="item.job"/>
+  <input type="text" value={{item.work_status}} [(ngModel)]="item.work_status"/>
+  <input type="date" value={{item.from_year}} [(ngModel)]="item.from_year"/>
+  <input type="date" value={{item.to_year}} [(ngModel)]="item.to_year"/>
+  <input type="text" value={{item.about}} [(ngModel)]="item.about"/>
+  <input type="button" (click)="deleteJob(item)" value="DELETE" />
+</div>
+<div>
+  <input type="text" [(ngModel)]="job"/>
+  <input type="text" [(ngModel)]="work_status"/>
+  <input type="date" [(ngModel)]="from_year"/>
+  <input type="date" [(ngModel)]="to_year"/>
+  <input type="text" [(ngModel)]="about"/>
+  <input type="button" (click)="addJob()" value="ADD" />
 </div>

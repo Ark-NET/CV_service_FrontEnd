@@ -36,9 +36,10 @@ export class User {
     this.email = "test@email.com";
     this.phone = "123123123123";
     this.face = [];
-    this.education = [{ "id": 1, "name": "Step", "specialization": "full dev steck", "from_year": '1991-01-01', "to_year": "2020-01-01", "about": "test" }]
-    this.links = [{ "id": 1, "name": "git", "link": "https://jhksdfjghsdfgjfd" }]
-    this.jods = [{ "id": 1, "job": 'ServiseCAr', "work_status": 'Developer', "from_year": "2011-02-15", "to_year": "2014-05-05", "about": 'big DATABASE', "user_id": 1 }];
+    this.education = [{ "id": 1, "name": "Step", "specialization": "full dev steck", "from_year": "1991-01-01", "to_year": "2020-01-01", "about": "test" }]
+    //this.links=[];
+    this.links = [{ "id": 1, "name": "git", "link": "https://jhksdfjghsdfgjfd" },{ "id": 2, "name": "git2", "link": "https://jhksdfjghsdfgjfd" }]
+    this.jods = [{ "id": 1, "job": 'ServiseCAr', "work_status": 'Developer', "from_year": "2011-02-15", "to_year": null, "about": 'big DATABASE', "user_id": 1 }];
   }
 
   setAllUserData(

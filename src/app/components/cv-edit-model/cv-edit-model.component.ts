@@ -26,6 +26,7 @@ export class CvEditModelComponent implements OnInit {
 
   loadUser() {
     const localUser = this.storage.getLocalStorage();
+    if(localUser!=null){
     this.request.userGET(localUser.id).subscribe((data) => {
       if (data) {
 
@@ -39,8 +40,13 @@ export class CvEditModelComponent implements OnInit {
       (err) => {
         console.log(err);
       }
-
-    )
+    )}
+    else this.router.navigate(["/loging"])
   };
+
+  saveUser() {
+
+    console.dir(this.user)
+  }
 
 }

@@ -1,42 +1,43 @@
 <div id="body_div">
-    <!--start head panel-->
-    <div class="logo_block">
-        <div class="area">G i ena_Code_Dev</div>
-    </div>
-    <!--end head panel-->
+  <!--start head panel-->
+  <div class="logo_block">
+    <div class="area">G i ena_Code_Dev</div>
+  </div>
+  <!--end head panel-->
 
 
-    <!--start body panel-->
-     <div class="central_content">
-       <div class="authoriation_panel">
-            <div class="panel_input">
+  <!--start body panel-->
+  <div class="central_content">
+    <div class="authoriation_panel">
+      <div class="panel_input">
 
-                <div class="photo_user">
-                    <img src="https://cdnimg.rg.ru/i/photogallery/2019/12/06/8085b70e8b6927e/800x01575618884.jpg" alt="">
-                </div>
+        <div class="photo_user">
+          <img src="https://cdnimg.rg.ru/i/photogallery/2019/12/06/8085b70e8b6927e/800x01575618884.jpg" alt="">
+        </div>
 
-                <div>
-                    <label for="F_L_name">First_Last_name*</label>
-                    <input id="F_L_name" type="text" class="form-control" aria-describedby="emailHelp">
-                </div>
+        <div>
+          <label for="F_L_name">First_Last_name*</label>
+          <input id="F_L_name" type="text" class="form-control" aria-describedby="emailHelp">
+        </div>
 
-                <div>
-                    <label for="email">email*</label>
-                    <input id="email" type="email" class="form-control" placeholder="example@email.com" />
-                </div>
+        <div>
+          <label for="email">email*</label>
+          <input id="email" type="email" class="form-control" placeholder="example@email.com" value="{{user.email}}"
+            [(ngModel)]="user.email" />
+        </div>
 
-                <div>
-                    <label for="phone">mobile phone*</label>
-                    <input id="phone" type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}" maxlength="12"
-                    placeholder="380XXXXXXXXXX" />
-                </div>
+        <div>
+          <label for="phone">mobile phone*</label>
+          <input id="phone" type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}"
+            maxlength="12" placeholder="380XXXXXXXXXX" />
+        </div>
 
-                <div>
-                    <label for="photo">Photo</label>
-                    <input id="photo" type="file" class="form-control" />
-                </div>
+        <div>
+          <label for="photo">Photo</label>
+          <input id="photo" type="file" class="form-control" />
+        </div>
 
-                <div>
+        <!-- <div>
                     <label for="link_social">Link</label>
                     <input id="link_social" type="text" class="form-control" />
                 </div>
@@ -44,11 +45,12 @@
                 <div>
                     <label for="about_you">About you</label>
                     <input id="about_you" type="text" class="form-control" />
-                </div>
+                </div> -->
+        <app-link [user]="user"></app-link>
 
-                <div class="skyline"></div>
+        <div class="skyline"></div>
 
-                <div>
+        <!-- <div>
                     <label for="last_jobe">last job place</label>
                     <input id="last_jobe" type="text" class="form-control" />
                 </div>
@@ -70,62 +72,57 @@
                 <div>
                     <label for="end_work">end work</label>
                     <input id="end_work" type="date" class="form-control" />
-                </div>
+                </div> -->
+        <app-job [user]="user"></app-job>
+        <div class="skyline"></div>
 
-                <div class="skyline"></div>
-
-                <div>
-                    <label for="education">Education</label>
-                    <input id="education" type="text" class="form-control" />
-                </div>
-
-                <div>
-                    <label for="specialization">Specialization</label>
-                    <input id="specialization" type="text" class="form-control" />
-                </div>
-
-                <div>
-                    <label for="about_educ">About your education</label>
-                    <input id="about_educ" type="text" class="form-control" />
-                </div>
-
-                <div>
-                    <label for="start_studies">start of studies</label>
-                    <input id="start_studies" type="date" class="form-control"/>
-                </div>
-                <div>
-                    <label for="end_studies">end of studies</label>
-                    <input id="end_studies" type="date" class="form-control"/>
-                </div>
-
-            </div>
-
-            <div class="btn_group">
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
+        <!-- <div>
+          <label for="education">Education</label>
+          <input id="education" type="text" class="form-control" />
         </div>
-    </div>
-    <!--end body panel-->
 
-
-    <!--start bottom panel-->
-    <div class="footer_content">
-        <h6>Developers</h6>
-        <div class="developers">
-            <div>
-                <h6>cminskii5@gmail.com</h6>
-                <h6>makskoz81@gmail.com</h6>
-            </div>
-            <div>
-                <h6>onufk1989@gmail.com</h6>
-                <h6>artyr4ik11@gmail.com</h6>
-            </div>
+        <div>
+          <label for="specialization">Specialization</label>
+          <input id="specialization" type="text" class="form-control" />
         </div>
+
+        <div>
+          <label for="about_educ">About your education</label>
+          <input id="about_educ" type="text" class="form-control" />
+        </div>
+
+        <div>
+          <label for="start_studies">start of studies</label>
+          <input id="start_studies" type="date" class="form-control" />
+        </div>
+        <div>
+          <label for="end_studies">end of studies</label>
+          <input id="end_studies" type="date" class="form-control" />
+        </div> -->
+        <app-education [user]="user"></app-education>
+      </div>
+
+      <div class="btn_group">
+        <button type="button" class="btn btn-primary" (click)="saveUser()">Save</button>
+      </div>
     </div>
-    <!--end bottom panel-->
+  </div>
+  <!--end body panel-->
+
+
+  <!--start bottom panel-->
+  <div class="footer_content">
+    <h6>Developers</h6>
+    <div class="developers">
+      <div>
+        <h6>cminskii5@gmail.com</h6>
+        <h6>makskoz81@gmail.com</h6>
+      </div>
+      <div>
+        <h6>onufk1989@gmail.com</h6>
+        <h6>artyr4ik11@gmail.com</h6>
+      </div>
+    </div>
+  </div>
+  <!--end bottom panel-->
 </div>
-
-
-
-
-
