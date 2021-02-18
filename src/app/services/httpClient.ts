@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { User } from '../models/user';
+import { DisposalBasket } from "../models/disposal-basket"
 import {
 
   HttpClient,
@@ -23,7 +24,8 @@ export class RequestDBService {
     headers: new HttpHeaders({ Accept: 'application/json' })
 
   };
-  constructor(private httpClient: HttpClient) { };
+  constructor(
+    private httpClient: HttpClient) { };
 
   private processError(error: HttpErrorResponse) {
     return throwError(error);
@@ -31,7 +33,7 @@ export class RequestDBService {
 
   public loginPOST(user: any): Observable<any> {
 
-    return this.httpClient.post(this.apiBaseURL + "/loging", user, this.httpOptions).pipe(catchError(this.processError));
+    return this.httpClient.post(this.apiBaseURL + "/login", user, this.httpOptions).pipe(catchError(this.processError));
   }
 
   public userGET(id: number): Observable<any> {
@@ -46,7 +48,11 @@ export class RequestDBService {
 
   public userADD(user: User): Observable<any> {
 
-    return this.httpClient.post(this.apiBaseURL, user, this.httpOptions).pipe(catchError(this.processError));
+    return this.httpClient.post(this.apiBaseURL + "/registration", user, this.httpOptions).pipe(catchError(this.processError));
+  }
+  public deleteData(obj: DisposalBasket): Observable<any> {
+
+    return this.httpClient.post(this.apiBaseURL, obj, this.httpOptions).pipe(catchError(this.processError));
   }
 
 }

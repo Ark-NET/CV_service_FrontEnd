@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
+import { DisposalBasket } from 'src/app/models/disposal-basket';
 
 @Component({
   selector: 'app-link',
@@ -9,7 +10,8 @@ import { ValidationService } from "../../services/validation.service"
 })
 export class LinkComponent implements OnInit {
 
-  @Input() user: User = new User();
+  @Input() user = new User();
+  @Input() basket = new DisposalBasket();
   errorMess = "";
   name = "";
   link = "";
@@ -24,7 +26,7 @@ export class LinkComponent implements OnInit {
       this.user.links.push({ "id": 0, "name": this.name, "link": this.link })
       this.name = "";
       this.link = "";
-      this.errorMess="";
+      this.errorMess = "";
     }
     else {
       this.errorMess = "Fill in all fields to add a link";
@@ -35,8 +37,8 @@ export class LinkComponent implements OnInit {
     var index = this.user.links.indexOf(item, 0);
     if (index > -1) {
       this.user.links.splice(index, 1);
+      if (item.id != 0) this.basket.jobs.push(item.id)
     }
-    //нужно сохранить id для запроса удаления с базы
   }
 
 }

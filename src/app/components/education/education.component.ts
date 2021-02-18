@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
+import { DisposalBasket } from 'src/app/models/disposal-basket';
 
 @Component({
   selector: 'app-education',
@@ -10,6 +11,7 @@ import { ValidationService } from "../../services/validation.service"
 export class EducationComponent implements OnInit {
 
   @Input() user: User = new User();
+  @Input() basket = new DisposalBasket();
   name = "";
   specialization = "";
   from_year = "";
@@ -26,8 +28,8 @@ export class EducationComponent implements OnInit {
     var index = this.user.education.indexOf(item, 0);
     if (index > -1) {
       this.user.education.splice(index, 1);
+      if (item.id != 0) this.basket.jobs.push(item.id)
     }
-    //нужно сохранить id для запроса удаления с базы
   }
 
   addEducation() {
@@ -46,7 +48,7 @@ export class EducationComponent implements OnInit {
       this.from_year = "";
       this.to_year = "";
       this.about = "";
-      this.errorMess="";
+      this.errorMess = "";
     }
     else {
       this.errorMess = "Fields cannot be empty: name, specialization, FROM ";

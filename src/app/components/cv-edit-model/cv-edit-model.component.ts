@@ -3,6 +3,9 @@ import { LocalStorageService } from '../../services/local-storage.service'
 import { Router } from '@angular/router';
 import { RequestDBService } from "../../services/httpClient";
 import { User } from 'src/app/models/user';
+import { DisposalBasket } from 'src/app/models/disposal-basket';
+
+const defaulteImg = "../../../assets/img/png-transparent-computer-icons-user-profile-priest-miscellaneous-avatar-user.png"
 
 @Component({
   selector: 'app-cv-edit-model',
@@ -10,20 +13,28 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./cv-edit-model.component.scss']
 })
 export class CvEditModelComponent implements OnInit {
-  errorMess: string = "";
-  user: User = new User();
+  errorMess = "";
+  user = new User();
   files: File[] = [];
+  dataTodelete = new DisposalBasket();
+  returnImg = "";
 
   constructor(
     private storage: LocalStorageService,
     private router: Router,
     private request: RequestDBService,
-  ) { }
+  ) { this.returnImg = defaulteImg }
 
   ngOnInit(): void {
     this.loadUser();
 
     this.user.setTESTdata();
+
+    this.dataTodelete.clear();
+
+    if (this.user.face != "") {
+      this.returnImg = this.user.face;
+    }
   }
 
   loadUser() {
@@ -55,16 +66,18 @@ export class CvEditModelComponent implements OnInit {
 
     this.readFile(this.files[0]).then(fileContents => {
       this.user.face = fileContents as string;
+      this.returnImg = this.user.face;
       // console.log(fileContents);
     })
   }
 
   onRemove(event: any) {
     this.files.splice(this.files.indexOf(event), 1);
+    this.returnImg = defaulteImg;
   }
 
 
-   readFile(file: File): Promise<string | ArrayBuffer> {
+  readFile(file: File): Promise<string | ArrayBuffer> {
     return new Promise<string | ArrayBuffer>((resolve, reject) => {
       const reader = new FileReader();
 
@@ -87,8 +100,12 @@ export class CvEditModelComponent implements OnInit {
   }
 
   saveUser() {
-    console.dir(this.files)
-    console.dir(this.user)
+    this.request.userUPD(this.user).subscribe((data) => {
+
+    },
+      (err) => {
+        console.log(err);
+      });
   }
 
   loguot() {

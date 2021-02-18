@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
+import { DisposalBasket } from 'src/app/models/disposal-basket';
 
 @Component({
   selector: 'app-job',
@@ -10,6 +11,7 @@ import { ValidationService } from "../../services/validation.service"
 export class JobComponent implements OnInit {
 
   @Input() user: User = new User();
+  @Input() basket = new DisposalBasket();
   job = "";
   work_status = "";
   from_year = "";
@@ -26,8 +28,8 @@ export class JobComponent implements OnInit {
     var index = this.user.jobs.indexOf(item, 0);
     if (index > -1) {
       this.user.jobs.splice(index, 1);
+      if (item.id != 0) this.basket.jobs.push(item.id)
     }
-    //нужно сохранить id для запроса удаления с базы
   }
 
   addJob() {
@@ -45,15 +47,15 @@ export class JobComponent implements OnInit {
       this.from_year = "";
       this.to_year = "";
       this.about = "";
-      this.errorMess="";
+      this.errorMess = "";
     }
-    else{
-      this.errorMess="Fields cannot be empty: JOB, STATUS, FROM ";
+    else {
+      this.errorMess = "Fields cannot be empty: JOB, STATUS, FROM ";
     }
 
   }
 
-  private formValidation():boolean{
+  private formValidation(): boolean {
 
     const arrValidationFilde: Array<boolean> = []
 
