@@ -28,7 +28,7 @@ export class EducationComponent implements OnInit {
     var index = this.user.education.indexOf(item, 0);
     if (index > -1) {
       this.user.education.splice(index, 1);
-      if (item.id != 0) this.basket.jobs.push(item.id)
+      if (item.id != 0) this.basket.education.push(item.id)
     }
   }
 

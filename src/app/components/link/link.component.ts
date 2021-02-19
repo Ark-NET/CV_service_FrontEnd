@@ -37,7 +37,7 @@ export class LinkComponent implements OnInit {
     var index = this.user.links.indexOf(item, 0);
     if (index > -1) {
       this.user.links.splice(index, 1);
-      if (item.id != 0) this.basket.jobs.push(item.id)
+      if (item.id != 0) this.basket.links.push(item.id)
     }
   }
 

@@ -33,7 +33,7 @@ export class User {
     this.password = "1234567890";
     this.email = "test@email.com";
     this.phone = "123123123123";
-    this.face = "../../assets/img/unnamed.jpg";
+    this.face = "";
     this.education = [{ "id": 1, "name": "Step", "specialization": "full dev steck", "from_year": "1991-01-01", "to_year": "2020-01-01", "about": "test" }]
     //this.links=[];
     this.links = [{ "id": 1, "name": "git", "link": "https://jhksdfjghsdfgjfd" }, { "id": 2, "name": "git2", "link": "https://jhksdfjghsdfgjfd" }]

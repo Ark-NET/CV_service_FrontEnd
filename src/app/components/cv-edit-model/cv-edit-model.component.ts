@@ -100,6 +100,7 @@ export class CvEditModelComponent implements OnInit {
   }
 
   saveUser() {
+    console.dir(this.dataTodelete)
     this.request.userUPD(this.user).subscribe((data) => {
 
     },
