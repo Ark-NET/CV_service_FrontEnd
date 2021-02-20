@@ -29,6 +29,7 @@ export class CvEditModelComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    //добавить сортировку масива
     this.loadUser();
 
     this.user.setTESTdata();
@@ -100,52 +101,16 @@ export class CvEditModelComponent implements OnInit {
   }
 
   public saveUser() {
+    console.dir(this.user)
     this.request.userUPD(this.user).subscribe((data) => {
 
     },
       (err) => {
         console.log(err);
       });
-    this.deleteDisposalBasket();
-
-  }
-  private deleteDisposalBasket() {
-
-    this.deleteEducation(this.toDelete.education);
-    this.deleteJob(this.toDelete.jobs);
-    this.deleteLink(this.toDelete.links);
-  }
-  //................................так себе решение
-  private deleteEducation(arr: Array<number>) {
-    if (arr.length > 0) {
-      arr.forEach(element => {
-        this.request.deleteData_education(element).subscribe((date) => {
-        }, (err) => console.log(err))
-      });
-
-      this.toDelete.education = [];
-    }
 
   }
 
-  private deleteJob(arr: Array<any>) {
-    if (arr.length > 0) {
-      arr.forEach(element => {
-        this.request.deleteData_job(element).subscribe((date) => { }, (err) => console.log(err))
-      });
-      this.toDelete.jobs = [];
-    }
-  }
-
-  private deleteLink(arr: Array<any>) {
-    if (arr.length > 0) {
-      arr.forEach(element => {
-        this.request.deleteData_link(element).subscribe((date) => { }, (err) => console.log(err))
-      });
-      this.toDelete.links = [];
-    }
-  }
-  ///////////////////////////////////////////////////////
   public loguot() {
     const localUser = this.storage.getLocalStorage();
 

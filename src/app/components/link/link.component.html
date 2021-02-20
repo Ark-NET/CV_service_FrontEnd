@@ -1,6 +1,6 @@
 <div *ngFor="let item of user.links">
-  <input type="text" value={{item.name}} [(ngModel)]="item.name" />
-  <input type="text" value={{item.link}} [(ngModel)]="item.link" />
+  <input type="text" [(ngModel)]="item.name" />
+  <input type="text" [(ngModel)]="item.link" />
   <input type="button" (click)="deleteLink(item)" value="DELETE" />
 </div>
 <div>
