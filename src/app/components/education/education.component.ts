@@ -8,7 +8,7 @@ import { DisposalBasket } from 'src/app/models/disposal-basket';
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss']
 })
-export class EducationComponent implements OnInit {
+export class EducationComponent {
 
   @Input() user: User = new User();
   @Input() basket = new DisposalBasket();
@@ -21,18 +21,15 @@ export class EducationComponent implements OnInit {
   errorMess = "";
   constructor(private validation: ValidationService) { }
 
-  ngOnInit(): void {
-  }
-
-  deleteEducation(item: any) {
+  public deleteEducation(item: any): void {
     var index = this.user.education.indexOf(item, 0);
     if (index > -1) {
       this.user.education.splice(index, 1);
-      if (item.id != 0) this.basket.education.push(item.id)
+      if (item.id != 0) this.basket.addTOBasket_education(item.id)
     }
   }
 
-  addEducation() {
+  public addEducation(): void {
 
     if (this.formValidation()) {
       this.user.education.push({

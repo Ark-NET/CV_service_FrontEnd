@@ -3,8 +3,6 @@ import { ValidationService } from "../../services/validation.service";
 import { RequestDBService } from "../../services/httpClient";
 import { LocalStorageService } from "../../services/local-storage.service";
 import { Router } from '@angular/router';
-import { User } from '../../models/user';
-import { Parser } from '@angular/compiler/src/ml_parser/parser';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +12,11 @@ import { Parser } from '@angular/compiler/src/ml_parser/parser';
 
 export class LoginComponent implements OnInit {
 
-  errorMess: string = "";
-  CheckMeOut: boolean = false;
-  inputlogin: string = "";
-  inputpassword: string = "";
+  errorMess= "";
+  CheckMeOut = false;
+  inputlogin = "";
+  inputpassword = "";
+
   constructor(
     private valid: ValidationService,
     private request: RequestDBService,
@@ -56,7 +55,7 @@ export class LoginComponent implements OnInit {
       this.isRemember({ "id": 1, "login": this.inputlogin, "password": this.inputpassword });
       this.router.navigate(['edit']);
 
-      this.request.loginPOST({ "id": 0, "email": this.inputlogin, "password": this.inputpassword }).subscribe(
+      this.request.loginPOST({ "email": this.inputlogin, "password": this.inputpassword }).subscribe(
         (data) => {
 
           if (data.result) {

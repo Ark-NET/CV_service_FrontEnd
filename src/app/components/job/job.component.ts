@@ -8,7 +8,7 @@ import { DisposalBasket } from 'src/app/models/disposal-basket';
   templateUrl: './job.component.html',
   styleUrls: ['./job.component.scss']
 })
-export class JobComponent implements OnInit {
+export class JobComponent  {
 
   @Input() user: User = new User();
   @Input() basket = new DisposalBasket();
@@ -21,18 +21,15 @@ export class JobComponent implements OnInit {
   errorMess = "";
   constructor(private validation: ValidationService) { }
 
-  ngOnInit(): void {
-  }
-
-  deleteJob(item: any) {
+  public deleteJob(item: any): void {
     var index = this.user.jobs.indexOf(item, 0);
     if (index > -1) {
       this.user.jobs.splice(index, 1);
-      if (item.id != 0) this.basket.jobs.push(item.id)
+      if (item.id != 0) this.basket.addTOBasket_jobs(item.id)
     }
   }
 
-  addJob() {
+  public addJob(): void {
     if (this.formValidation()) {
       this.user.jobs.push({
         "id": 0, "job": this.job,

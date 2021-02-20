@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { User } from '../models/user';
-import { DisposalBasket } from "../models/disposal-basket"
 import {
 
   HttpClient,
@@ -50,9 +49,20 @@ export class RequestDBService {
 
     return this.httpClient.post(this.apiBaseURL + "/registration", user, this.httpOptions).pipe(catchError(this.processError));
   }
-  public deleteData(obj: DisposalBasket): Observable<any> {
 
-    return this.httpClient.post(this.apiBaseURL, obj, this.httpOptions).pipe(catchError(this.processError));
+  public deleteData_education(id:number): Observable<any> {
+
+    return this.httpClient.delete(this.apiBaseURL+`/education/${id}`).pipe(catchError(this.processError));
+  }
+
+  public deleteData_link(id:number): Observable<any> {
+
+    return this.httpClient.delete(this.apiBaseURL+`/link/${id}`).pipe(catchError(this.processError));
+  }
+
+  public deleteData_job(id:number): Observable<any> {
+
+    return this.httpClient.delete(this.apiBaseURL+`/job/${id}`).pipe(catchError(this.processError));
   }
 
 }

@@ -8,7 +8,7 @@ import { DisposalBasket } from 'src/app/models/disposal-basket';
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.scss']
 })
-export class LinkComponent implements OnInit {
+export class LinkComponent {
 
   @Input() user = new User();
   @Input() basket = new DisposalBasket();
@@ -18,10 +18,7 @@ export class LinkComponent implements OnInit {
 
   constructor(private validation: ValidationService) { }
 
-  ngOnInit(): void {
-  }
-
-  addLink() {
+  public addLink(): void {
     if (!this.validation.isEmpty(this.name) && !this.validation.isEmpty(this.link)) {
       this.user.links.push({ "id": 0, "name": this.name, "link": this.link })
       this.name = "";
@@ -33,11 +30,11 @@ export class LinkComponent implements OnInit {
     }
   }
 
-  deleteLink(item: any) {
+  public deleteLink(item: any): void {
     var index = this.user.links.indexOf(item, 0);
     if (index > -1) {
       this.user.links.splice(index, 1);
-      if (item.id != 0) this.basket.links.push(item.id)
+      if (item.id != 0) this.basket.addTOBasket_links(item.id)
     }
   }
 
