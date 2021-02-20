@@ -54,7 +54,7 @@
                     <label for="about_you">About you</label>
                     <input id="about_you" type="text" class="form-control" />
                 </div> -->
-        <app-link [user]="user" [basket]="dataTodelete"></app-link>
+        <app-link [user]="user" [basket]="toDelete"></app-link>
 
         <div class="skyline"></div>
 
@@ -81,7 +81,7 @@
                     <label for="end_work">end work</label>
                     <input id="end_work" type="date" class="form-control" />
                 </div> -->
-        <app-job [user]="user" [basket]="dataTodelete"></app-job>
+        <app-job [user]="user" [basket]="toDelete"></app-job>
         <div class="skyline"></div>
 
         <!-- <div>
@@ -107,7 +107,7 @@
           <label for="end_studies">end of studies</label>
           <input id="end_studies" type="date" class="form-control" />
         </div> -->
-        <app-education [user]="user" [basket]="dataTodelete"></app-education>
+        <app-education [user]="user" [basket]="toDelete"></app-education>
       </div>
 
       <div class="btn_group">

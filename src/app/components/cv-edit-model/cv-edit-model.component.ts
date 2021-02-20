@@ -16,7 +16,7 @@ export class CvEditModelComponent implements OnInit {
   errorMess = "";
   user = new User();
   files: File[] = [];
-  dataTodelete: DisposalBasket;
+  toDelete: DisposalBasket;
   returnImg = "";
 
   constructor(
@@ -25,7 +25,7 @@ export class CvEditModelComponent implements OnInit {
     private request: RequestDBService,
   ) {
     this.returnImg = defaulteImg;
-    this.dataTodelete = new DisposalBasket();
+    this.toDelete = new DisposalBasket();
   }
 
   public ngOnInit(): void {
@@ -111,40 +111,39 @@ export class CvEditModelComponent implements OnInit {
   }
   private deleteDisposalBasket() {
 
-    this.deleteArray_education(this.dataTodelete.education);
-    this.deleteArray_job(this.dataTodelete.jobs);
-    this.deleteArray_link(this.dataTodelete.links);
+    this.deleteEducation(this.toDelete.education);
+    this.deleteJob(this.toDelete.jobs);
+    this.deleteLink(this.toDelete.links);
   }
   //................................так себе решение
-  private deleteArray_education(arr: Array<number>) {
+  private deleteEducation(arr: Array<number>) {
     if (arr.length > 0) {
       arr.forEach(element => {
-        console.log(this.dataTodelete);
         this.request.deleteData_education(element).subscribe((date) => {
           this.dataTodelete.education.slice();
         }, (err) => console.log(err))
       });
 
-      this.dataTodelete.education = [];
+      this.toDelete.education = [];
     }
 
   }
 
-  private deleteArray_job(arr: Array<any>) {
+  private deleteJob(arr: Array<any>) {
     if (arr.length > 0) {
       arr.forEach(element => {
         this.request.deleteData_job(element).subscribe((date) => { }, (err) => console.log(err))
       });
-      this.dataTodelete.jobs = [];
+      this.toDelete.jobs = [];
     }
   }
 
-  private deleteArray_link(arr: Array<any>) {
+  private deleteLink(arr: Array<any>) {
     if (arr.length > 0) {
       arr.forEach(element => {
         this.request.deleteData_link(element).subscribe((date) => { }, (err) => console.log(err))
       });
-      this.dataTodelete.links = [];
+      this.toDelete.links = [];
     }
   }
   ///////////////////////////////////////////////////////
