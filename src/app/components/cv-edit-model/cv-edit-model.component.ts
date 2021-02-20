@@ -120,7 +120,6 @@ export class CvEditModelComponent implements OnInit {
     if (arr.length > 0) {
       arr.forEach(element => {
         this.request.deleteData_education(element).subscribe((date) => {
-          this.dataTodelete.education.slice();
         }, (err) => console.log(err))
       });
 
