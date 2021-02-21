@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
-import { DisposalBasket } from 'src/app/models/disposal-basket';
 
 @Component({
   selector: 'app-link',
@@ -11,7 +10,6 @@ import { DisposalBasket } from 'src/app/models/disposal-basket';
 export class LinkComponent {
 
   @Input() user = new User();
-  @Input() basket = new DisposalBasket();
   errorMess = "";
   name = "";
   link = "";
@@ -34,7 +32,6 @@ export class LinkComponent {
     var index = this.user.links.indexOf(item, 0);
     if (index > -1) {
       this.user.links.splice(index, 1);
-      if (item.id != 0) this.basket.addTOBasket_links(item.id)
     }
   }
 

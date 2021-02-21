@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
-import { DisposalBasket } from 'src/app/models/disposal-basket';
 
 @Component({
   selector: 'app-education',
@@ -11,7 +10,6 @@ import { DisposalBasket } from 'src/app/models/disposal-basket';
 export class EducationComponent {
 
   @Input() user: User = new User();
-  @Input() basket = new DisposalBasket();
   name = "";
   specialization = "";
   from_year = "";
@@ -25,7 +23,6 @@ export class EducationComponent {
     var index = this.user.education.indexOf(item, 0);
     if (index > -1) {
       this.user.education.splice(index, 1);
-      if (item.id != 0) this.basket.addTOBasket_education(item.id)
     }
   }
 

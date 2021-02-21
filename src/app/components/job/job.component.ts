@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
-import { DisposalBasket } from 'src/app/models/disposal-basket';
 
 @Component({
   selector: 'app-job',
@@ -11,7 +10,6 @@ import { DisposalBasket } from 'src/app/models/disposal-basket';
 export class JobComponent  {
 
   @Input() user: User = new User();
-  @Input() basket = new DisposalBasket();
   job = "";
   work_status = "";
   from_year = "";
@@ -25,7 +23,6 @@ export class JobComponent  {
     var index = this.user.jobs.indexOf(item, 0);
     if (index > -1) {
       this.user.jobs.splice(index, 1);
-      if (item.id != 0) this.basket.addTOBasket_jobs(item.id)
     }
   }
 

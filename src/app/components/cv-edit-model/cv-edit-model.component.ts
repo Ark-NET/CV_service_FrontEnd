@@ -3,7 +3,6 @@ import { LocalStorageService } from '../../services/local-storage.service'
 import { Router } from '@angular/router';
 import { RequestDBService } from "../../services/httpClient";
 import { User } from 'src/app/models/user';
-import { DisposalBasket } from 'src/app/models/disposal-basket';
 
 const defaulteImg = "../../../assets/img/png-transparent-computer-icons-user-profile-priest-miscellaneous-avatar-user.png"
 
@@ -16,7 +15,6 @@ export class CvEditModelComponent implements OnInit {
   errorMess = "";
   user = new User();
   files: File[] = [];
-  toDelete: DisposalBasket;
   returnImg = "";
 
   constructor(
@@ -25,7 +23,6 @@ export class CvEditModelComponent implements OnInit {
     private request: RequestDBService,
   ) {
     this.returnImg = defaulteImg;
-    this.toDelete = new DisposalBasket();
   }
 
   public ngOnInit(): void {
