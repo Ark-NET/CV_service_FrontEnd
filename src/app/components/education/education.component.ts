@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
+import { sortArry } from "../../services/template-functions.service";
 
 @Component({
   selector: 'app-education',
@@ -17,7 +18,8 @@ export class EducationComponent {
   about = "";
 
   errorMess = "";
-  constructor(private validation: ValidationService) { }
+  constructor(
+    private validation: ValidationService) { }
 
   public deleteEducation(item: any): void {
     var index = this.user.education.indexOf(item, 0);
@@ -36,6 +38,8 @@ export class EducationComponent {
         "to_year": this.to_year == "" ? null : this.to_year,
         "about": this.about
       })
+
+      sortArry(this.user.education);
 
       this.name = "";
       this.specialization = "";
@@ -58,5 +62,9 @@ export class EducationComponent {
     arrValidationFilde.push(this.validation.isEmpty(this.from_year));
 
     return arrValidationFilde.indexOf(true) >= 0 ? false : true;
+  }
+
+  private sortArry(arr: Array<any>) {
+    arr = arr.sort((a, b) => a.from_year < b.from_year ? 1 : -1);
   }
 }

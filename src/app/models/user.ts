@@ -1,15 +1,15 @@
 export class User {
 
-   id: number;
-   full_name: string;
-   login: string;
-   password: string;
-   email: string;
-   phone: string;
-   face: string;
-   education: Array<any>;
-   links: Array<any>;
-   jobs: Array<any>;
+  id: number;
+  full_name: string;
+  login: string;
+  password: string;
+  email: string;
+  phone: string;
+  face: string;
+  education: Array<any>;
+  links: Array<any>;
+  jobs: Array<any>;
 
   constructor() {
 
@@ -34,7 +34,7 @@ export class User {
     this.email = "test@email.com";
     this.phone = "123123123123";
     this.face = "";
-    this.education = [{ "id": 1, "name": "Step", "specialization": "full dev steck", "from_year": "1991-01-01", "to_year": "2020-01-01", "about": "test" }]
+    this.education = [{ "id": 1, "name": "Step1", "specialization": "full dev steck1", "from_year": "1991-01-01", "to_year": "2020-01-01", "about": "test" }, { "id": 2, "name": "Step", "specialization": "full dev steck", "from_year": "1993-01-01", "to_year": "2020-01-01", "about": "test" }]
     //this.links=[];
     this.links = [{ "id": 1, "name": "git", "link": "https://jhksdfjghsdfgjfd" }, { "id": 2, "name": "git2", "link": "https://jhksdfjghsdfgjfd" }]
     this.jobs = [{ "id": 1, "job": 'ServiseCAr', "work_status": 'Developer', "from_year": "2011-02-15", "to_year": null, "about": 'big DATABASE', "user_id": 1 }];

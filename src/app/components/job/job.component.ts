@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
+import { sortArry } from "../../services/template-functions.service";
 
 @Component({
   selector: 'app-job',
@@ -36,6 +37,7 @@ export class JobComponent  {
         "about": this.about
       })
 
+      sortArry(this.user.jobs);
       this.job = "";
       this.work_status = "";
       this.from_year = "";

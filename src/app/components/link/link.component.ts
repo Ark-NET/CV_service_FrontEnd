@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
+import { sortArry } from "../../services/template-functions.service";
 
 @Component({
   selector: 'app-link',
@@ -18,7 +19,9 @@ export class LinkComponent {
 
   public addLink(): void {
     if (!this.validation.isEmpty(this.name) && !this.validation.isEmpty(this.link)) {
-      this.user.links.push({ "id": 0, "name": this.name, "link": this.link })
+      this.user.links.push({ "id": 0, "name": this.name, "link": this.link });
+
+      sortArry(this.user.links);
       this.name = "";
       this.link = "";
       this.errorMess = "";

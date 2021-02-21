@@ -3,6 +3,7 @@ import { LocalStorageService } from '../../services/local-storage.service'
 import { Router } from '@angular/router';
 import { RequestDBService } from "../../services/httpClient";
 import { User } from 'src/app/models/user';
+import { sortArry } from "../../services/template-functions.service";
 
 const defaulteImg = "../../../assets/img/png-transparent-computer-icons-user-profile-priest-miscellaneous-avatar-user.png"
 
@@ -20,7 +21,7 @@ export class CvEditModelComponent implements OnInit {
   constructor(
     private storage: LocalStorageService,
     private router: Router,
-    private request: RequestDBService,
+    private request: RequestDBService
   ) {
     this.returnImg = defaulteImg;
   }
@@ -34,6 +35,8 @@ export class CvEditModelComponent implements OnInit {
     if (this.user.face != "") {
       this.returnImg = this.user.face;
     }
+
+    sortArry(this.user.education);
   }
 
   private loadUser(): void {
@@ -59,7 +62,7 @@ export class CvEditModelComponent implements OnInit {
     else this.router.navigate(["/loging"])
   };
 
-  public onSelect(event: any) {
+  public onSelect(event: any): void {
     this.onRemove(event);
     this.files.push(...event.addedFiles);
 
@@ -69,7 +72,7 @@ export class CvEditModelComponent implements OnInit {
     })
   }
 
-  public onRemove(event: any) {
+  public onRemove(event: any): void {
     this.files.splice(this.files.indexOf(event), 1);
     this.returnImg = defaulteImg;
   }
@@ -97,7 +100,7 @@ export class CvEditModelComponent implements OnInit {
     });
   }
 
-  public saveUser() {
+  public saveUser(): void {
     console.dir(this.user)
     this.request.userUPD(this.user).subscribe((data) => {
 
@@ -108,7 +111,7 @@ export class CvEditModelComponent implements OnInit {
 
   }
 
-  public loguot() {
+  public loguot(): void {
     const localUser = this.storage.getLocalStorage();
 
     if (localUser.rem == false) {
