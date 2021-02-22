@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RequestDBService } from '../../services/httpClient'
+import { User } from "../../models/user"
 
 @Component({
   selector: 'app-cv-view-model',
@@ -9,12 +11,32 @@ import { ActivatedRoute } from '@angular/router';
 export class CvViewModelComponent implements OnInit {
 
   id: number;
-  constructor(private activateRoute: ActivatedRoute) {
+  constructor(
+
+    private activateRoute: ActivatedRoute,
+    private request: RequestDBService,
+    private user: User
+  ) {
 
     this.id = activateRoute.snapshot.params['id'];
   }
-  ngOnInit(): void {
+  public ngOnInit(): void {
     console.log(this.id);
+
+    this.request.userGET(this.id).subscribe((data) => {
+      if (data) {
+
+        this.user.setAllUserData(
+          data.id, data.full_name, data.login,
+          data.password, data.email, data.phone,
+          data.education, data.links, data.jods,
+          data.face);
+      }
+    },
+      (err) => {
+        console.log(err);
+      }
+    )
   }
 
 

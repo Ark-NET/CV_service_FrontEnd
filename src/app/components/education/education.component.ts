@@ -17,6 +17,7 @@ export class EducationComponent {
     links: [],
     jobs: []
   };
+
   name = "";
   specialization = "";
   from_year = "";
