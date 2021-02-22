@@ -126,7 +126,7 @@ export class CvEditModelComponent implements OnInit {
   }
 
 
-  private clearBasket() {
+  private clearBasket():void {
 
     this.basket.education.forEach(element => {
 
