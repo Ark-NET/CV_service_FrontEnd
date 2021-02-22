@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
 import { sortArry } from "../../services/template-functions.service";
+import { IDisposalBasket } from '../../models/Interface';
 
 @Component({
   selector: 'app-job',
@@ -11,6 +12,11 @@ import { sortArry } from "../../services/template-functions.service";
 export class JobComponent  {
 
   @Input() user: User = new User();
+  @Input() basket: IDisposalBasket = {
+    education: [],
+    links: [],
+    jobs: []
+  };
   job = "";
   work_status = "";
   from_year = "";
@@ -24,6 +30,7 @@ export class JobComponent  {
     var index = this.user.jobs.indexOf(item, 0);
     if (index > -1) {
       this.user.jobs.splice(index, 1);
+      this.basket.jobs.push(item.id)
     }
   }
 

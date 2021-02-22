@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
 import { sortArry } from "../../services/template-functions.service";
+import { IDisposalBasket } from '../../models/Interface';
 
 @Component({
   selector: 'app-education',
@@ -11,6 +12,11 @@ import { sortArry } from "../../services/template-functions.service";
 export class EducationComponent {
 
   @Input() user: User = new User();
+  @Input() basket: IDisposalBasket = {
+    education: [],
+    links: [],
+    jobs: []
+  };
   name = "";
   specialization = "";
   from_year = "";
@@ -25,6 +31,7 @@ export class EducationComponent {
     var index = this.user.education.indexOf(item, 0);
     if (index > -1) {
       this.user.education.splice(index, 1);
+      this.basket.education.push(item.id)
     }
   }
 
@@ -62,9 +69,5 @@ export class EducationComponent {
     arrValidationFilde.push(this.validation.isEmpty(this.from_year));
 
     return arrValidationFilde.indexOf(true) >= 0 ? false : true;
-  }
-
-  private sortArry(arr: Array<any>) {
-    arr = arr.sort((a, b) => a.from_year < b.from_year ? 1 : -1);
   }
 }

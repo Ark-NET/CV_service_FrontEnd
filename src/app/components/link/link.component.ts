@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
 import { sortArry } from "../../services/template-functions.service";
+import { IDisposalBasket } from '../../models/Interface';
 
 @Component({
   selector: 'app-link',
@@ -11,6 +12,11 @@ import { sortArry } from "../../services/template-functions.service";
 export class LinkComponent {
 
   @Input() user = new User();
+  @Input() basket: IDisposalBasket = {
+    education: [],
+    links: [],
+    jobs: []
+  };
   errorMess = "";
   name = "";
   link = "";
@@ -35,6 +41,7 @@ export class LinkComponent {
     var index = this.user.links.indexOf(item, 0);
     if (index > -1) {
       this.user.links.splice(index, 1);
+      this.basket.links.push(item.id);
     }
   }
 

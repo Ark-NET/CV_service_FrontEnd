@@ -3,7 +3,8 @@ import { LocalStorageService } from '../../services/local-storage.service'
 import { Router } from '@angular/router';
 import { RequestDBService } from "../../services/httpClient";
 import { User } from 'src/app/models/user';
-import { sortArry } from "../../services/template-functions.service";
+import { sortArry, deleteItemArray } from "../../services/template-functions.service";
+import { IDisposalBasket } from '../../models/Interface'
 
 const defaulteImg = "../../../assets/img/png-transparent-computer-icons-user-profile-priest-miscellaneous-avatar-user.png"
 
@@ -17,17 +18,21 @@ export class CvEditModelComponent implements OnInit {
   user = new User();
   files: File[] = [];
   returnImg = "";
+  basket: IDisposalBasket = {
+    education: [],
+    links: [],
+    jobs: []
+  };
 
   constructor(
     private storage: LocalStorageService,
     private router: Router,
-    private request: RequestDBService
+    private request: RequestDBService,
   ) {
     this.returnImg = defaulteImg;
   }
 
   public ngOnInit(): void {
-    //добавить сортировку масива
     this.loadUser();
 
     this.user.setTESTdata();
@@ -102,13 +107,13 @@ export class CvEditModelComponent implements OnInit {
 
   public saveUser(): void {
     console.dir(this.user)
+    console.dir(this.basket)
     this.request.userUPD(this.user).subscribe((data) => {
-
+      this.clearBasket();
     },
       (err) => {
         console.log(err);
       });
-
   }
 
   public loguot(): void {
@@ -118,5 +123,35 @@ export class CvEditModelComponent implements OnInit {
       this.storage.deleteLocalStorage();
     }
     this.router.navigate(["/loging"])
+  }
+
+
+  private clearBasket() {
+
+    this.basket.education.forEach(element => {
+
+      this.request.deleteData_education(element.id).subscribe((data) => {
+        deleteItemArray(this.basket.education, element.id)
+      },
+        (err) => { console.log(err) })
+
+    });
+
+    this.basket.jobs.forEach(element => {
+
+      this.request.deleteData_job(element.id).subscribe((data) => {
+        deleteItemArray(this.basket.jobs, element.id)
+      }, (err) => { console.log(err) })
+
+    });
+
+    this.basket.links.forEach(element => {
+
+      this.request.deleteData_link(element.id).subscribe((data) => {
+        deleteItemArray(this.basket.links, element.id)
+      }, (err) => { console.log(err) })
+
+    });
+
   }
 }
