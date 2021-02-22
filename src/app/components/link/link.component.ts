@@ -27,7 +27,6 @@ export class LinkComponent {
     if (!this.validation.isEmpty(this.name) && !this.validation.isEmpty(this.link)) {
       this.user.links.push({ "id": 0, "name": this.name, "link": this.link });
 
-      sortArry(this.user.links);
       this.name = "";
       this.link = "";
       this.errorMess = "";
