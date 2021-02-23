@@ -36,6 +36,8 @@ export class CvEditModelComponent implements OnInit {
     this.loadUser();
 
     // this.user.setTESTdata();
+    this.cutTime(this.user.education, /T.+Z/)
+    this.cutTime(this.user.jobs, /T.+Z/)
 
     if (this.user.face != "") {
       this.returnImg = this.user.face;
@@ -43,6 +45,19 @@ export class CvEditModelComponent implements OnInit {
 
     sortArry(this.user.education);
   }
+  private cutTime(arr: Array<any>, reg: RegExp): void {
+
+    arr.forEach(elem => {
+
+      elem.from_year = elem.from_year.replace(reg, "");
+
+      if (elem.to_year != null) {
+        elem.to_year = elem.to_year.replace(reg, "");
+      }
+
+    })
+  }
+
 
   private loadUser(): void {
 
@@ -126,7 +141,7 @@ export class CvEditModelComponent implements OnInit {
   }
 
 
-  private clearBasket():void {
+  private clearBasket(): void {
 
     this.basket.education.forEach(element => {
 
