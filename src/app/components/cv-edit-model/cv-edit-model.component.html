@@ -36,8 +36,8 @@
         <div>
           <label for="photo">Photo</label>
           <!-- <input id="photo" type="file" class="form-control" [(ngModel)]="user.face"/> -->
-          <ngx-dropzone (change)="onSelect($event)" [multiple]="false" [expandable]="false" [maxFileSize]="64000"
-            accept="image/png,image/jpg">
+          <ngx-dropzone (change)="onSelect($event)" [multiple]="false" [expandable]="false" [maxFileSize]="1000000"
+            accept="image/jpeg,image/jpg,image/png">
             <ngx-dropzone-label>Drop it, photo!</ngx-dropzone-label>
             <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
               <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
