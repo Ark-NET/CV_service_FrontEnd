@@ -42,7 +42,7 @@ export class RequestDBService {
 
   public userUPD(user: User): Observable<any> {
 
-    return this.httpClient.post(this.apiBaseURL, user, this.httpOptions).pipe(catchError(this.processError));
+    return this.httpClient.post(this.apiBaseURL+'/userObject', user, this.httpOptions).pipe(catchError(this.processError));
   }
 
   public userADD(user: User): Observable<any> {
