@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  errorMess= "";
-  CheckMeOut = false;
-  inputlogin = "";
-  inputpassword = "";
+  public errorMess = "";
+  public CheckMeOut = false;
+  public inputlogin = "";
+  public inputpassword = "";
 
   constructor(
     private valid: ValidationService,

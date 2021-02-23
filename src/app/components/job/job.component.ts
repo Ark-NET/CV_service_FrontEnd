@@ -17,13 +17,13 @@ export class JobComponent  {
     links: [],
     jobs: []
   };
-  job = "";
-  work_status = "";
-  from_year = "";
-  to_year = "";
-  about = "";
+  public job = "";
+  public work_status = "";
+  public from_year = "";
+  public to_year = "";
+  public about = "";
 
-  errorMess = "";
+  public errorMess = "";
   constructor(private validation: ValidationService) { }
 
   public deleteJob(item: any): void {

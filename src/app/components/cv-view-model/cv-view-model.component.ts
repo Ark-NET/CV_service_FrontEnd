@@ -10,7 +10,7 @@ import { User } from "../../models/user"
 })
 export class CvViewModelComponent implements OnInit {
 
-  id: number;
+  public id: number;
   constructor(
 
     private activateRoute: ActivatedRoute,

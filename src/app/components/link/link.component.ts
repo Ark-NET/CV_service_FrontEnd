@@ -17,9 +17,9 @@ export class LinkComponent {
     links: [],
     jobs: []
   };
-  errorMess = "";
-  name = "";
-  link = "";
+  public errorMess = "";
+  public name = "";
+  public link = "";
 
   constructor(private validation: ValidationService) { }
 

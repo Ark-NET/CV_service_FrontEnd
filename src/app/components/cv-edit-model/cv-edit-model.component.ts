@@ -14,11 +14,11 @@ const defaulteImg = "../../../assets/img/png-transparent-computer-icons-user-pro
   styleUrls: ['./cv-edit-model.component.scss']
 })
 export class CvEditModelComponent implements OnInit {
-  errorMess = "";
-  user = new User();
-  files: File[] = [];
-  returnImg = "";
-  basket: IDisposalBasket = {
+  private errorMess = "";
+  public user = new User();
+  public files: File[] = [];
+  public returnImg = "";
+  public basket: IDisposalBasket = {
     education: [],
     links: [],
     jobs: []
@@ -35,7 +35,7 @@ export class CvEditModelComponent implements OnInit {
   public ngOnInit(): void {
     this.loadUser();
 
-    this.user.setTESTdata();
+    // this.user.setTESTdata();
 
     if (this.user.face != "") {
       this.returnImg = this.user.face;

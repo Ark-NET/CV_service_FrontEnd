@@ -11,13 +11,13 @@ import { ValidationService } from "../../services/validation.service"
 })
 export class RegistrationComponent implements OnInit {
 
-  errorMess = "";
+  public errorMess = "";
 
-  full_name = ""
-  login = ""
-  password = ""
-  email = ""
-  phone = ""
+  public full_name = ""
+  public login = ""
+  public password = ""
+  public email = ""
+  public phone = ""
   constructor(
     private router: Router,
     private request: RequestDBService,
