@@ -60,7 +60,7 @@ export class CvEditModelComponent implements OnInit {
         if (data) {
 
           this.user.setAllUserData(
-            data.id, data.full_name, data.login,
+            data.id, data.full_name, data.position, data.login,
             data.password, data.email, data.phone,
             data.education, data.links, data.jobs,
             data.face);

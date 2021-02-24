@@ -2,6 +2,7 @@ export class User {
 
   id: number;
   full_name: string;
+  position?: string;
   login: string;
   password: string;
   email: string;
@@ -15,6 +16,7 @@ export class User {
 
     this.id = -1;
     this.full_name = "";
+    this.position = "";
     this.login = "";
     this.password = "";
     this.email = "";
@@ -29,6 +31,7 @@ export class User {
 
     this.id = 123;
     this.full_name = "Anton";
+    this.position = "QA"
     this.login = "Tsminskyi";
     this.password = "1234567890";
     this.email = "test@email.com";
@@ -41,18 +44,18 @@ export class User {
   }
 
   setAllUserData(
-    id: number, full_name: string, login: string,
+    id: number, full_name: string, position: string, login: string,
     password: string, email: string, phone: string,
-    education: Array<any>, links: Array<any>, jobs: Array<any>,
-    face: string) {
+    education: Array<any>, links: Array<any>, jobs: Array<any>, face: string) {
 
     this.id = id;
     this.full_name = full_name;
+    this.position = position;
     this.login = login;
     this.password = password;
     this.email = email;
     this.phone = phone;
-    this.face = face
+    this.face = face;
     this.education = education;
     this.links = links;
     this.jobs = jobs;
