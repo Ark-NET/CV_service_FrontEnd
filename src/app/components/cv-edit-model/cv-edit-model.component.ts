@@ -68,7 +68,7 @@ export class CvEditModelComponent implements OnInit {
           this.cutTime(this.user.education, /T.+Z/)
           this.cutTime(this.user.jobs, /T.+Z/)
 
-          if (this.user.face != "") {
+          if (this.user.face != null) {
             this.returnImg = this.user.face;
           }
 
