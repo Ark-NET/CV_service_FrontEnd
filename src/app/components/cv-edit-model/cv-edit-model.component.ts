@@ -36,14 +36,6 @@ export class CvEditModelComponent implements OnInit {
     this.loadUser();
 
     // this.user.setTESTdata();
-    this.cutTime(this.user.education, /T.+Z/)
-    this.cutTime(this.user.jobs, /T.+Z/)
-
-    if (this.user.face != "") {
-      this.returnImg = this.user.face;
-    }
-
-    sortArry(this.user.education);
   }
   private cutTime(arr: Array<any>, reg: RegExp): void {
 
@@ -70,8 +62,17 @@ export class CvEditModelComponent implements OnInit {
           this.user.setAllUserData(
             data.id, data.full_name, data.login,
             data.password, data.email, data.phone,
-            data.education, data.links, data.jods,
+            data.education, data.links, data.jobs,
             data.face);
+
+          this.cutTime(this.user.education, /T.+Z/)
+          this.cutTime(this.user.jobs, /T.+Z/)
+
+          if (this.user.face != "") {
+            this.returnImg = this.user.face;
+          }
+
+          sortArry(this.user.education);
         }
       },
         (err) => {

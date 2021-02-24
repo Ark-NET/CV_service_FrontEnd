@@ -34,8 +34,6 @@ export class LoginComponent implements OnInit {
     }
   };
 
-
-
   isRemember(data: any) {
     if (this.CheckMeOut) {
       data.rem = true;
@@ -52,14 +50,11 @@ export class LoginComponent implements OnInit {
 
     if (this.formValidation(login, password)) {
 
-      this.isRemember({ "id": 1, "login": this.inputlogin, "password": this.inputpassword });
-      this.router.navigate(['edit']);
-
-      this.request.loginPOST({ "email": this.inputlogin, "password": this.inputpassword }).subscribe(
+      this.request.loginPOST({ "login": this.inputlogin, "password": this.inputpassword }).subscribe(
         (data) => {
 
           if (data.result) {
-            this.isRemember({ "id": data.id, "email": this.inputlogin, "password": this.inputpassword }); //нужно прикрутить JWT
+            this.isRemember({ "id": data.id, "login": this.inputlogin, "password": this.inputpassword }); //нужно прикрутить JWT
             this.router.navigate(['edit']);
           }
           else {

@@ -43,7 +43,7 @@ export class User {
   setAllUserData(
     id: number, full_name: string, login: string,
     password: string, email: string, phone: string,
-    education: Array<any>, links: Array<any>, jods: Array<any>,
+    education: Array<any>, links: Array<any>, jobs: Array<any>,
     face: string) {
 
     this.id = id;
@@ -55,7 +55,7 @@ export class User {
     this.face = face
     this.education = education;
     this.links = links;
-    this.jobs = jods;
+    this.jobs = jobs;
   }
 
   setRegistartionUserData(
