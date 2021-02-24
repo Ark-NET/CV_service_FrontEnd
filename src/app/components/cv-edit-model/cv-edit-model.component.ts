@@ -122,8 +122,6 @@ export class CvEditModelComponent implements OnInit {
   }
 
   public saveUser(): void {
-    console.dir(this.user)
-    console.dir(this.basket)
     this.request.userUPD(this.user).subscribe((data) => {
       this.clearBasket();
     },
@@ -146,8 +144,9 @@ export class CvEditModelComponent implements OnInit {
 
     this.basket.education.forEach(element => {
 
-      this.request.deleteData_education(element.id).subscribe((data) => {
-        deleteItemArray(this.basket.education, element.id)
+      this.request.deleteData_education(element).subscribe((data) => {
+
+        deleteItemArray(this.basket.education, element)
       },
         (err) => { console.log(err) })
 
@@ -155,16 +154,16 @@ export class CvEditModelComponent implements OnInit {
 
     this.basket.jobs.forEach(element => {
 
-      this.request.deleteData_job(element.id).subscribe((data) => {
-        deleteItemArray(this.basket.jobs, element.id)
+      this.request.deleteData_job(element).subscribe((data) => {
+        deleteItemArray(this.basket.jobs, element)
       }, (err) => { console.log(err) })
 
     });
 
     this.basket.links.forEach(element => {
 
-      this.request.deleteData_link(element.id).subscribe((data) => {
-        deleteItemArray(this.basket.links, element.id)
+      this.request.deleteData_link(element).subscribe((data) => {
+        deleteItemArray(this.basket.links, element)
       }, (err) => { console.log(err) })
 
     });
