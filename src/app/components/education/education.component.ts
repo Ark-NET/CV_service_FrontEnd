@@ -57,7 +57,7 @@ export class EducationComponent {
       this.errorMess = "";
     }
     else {
-      this.errorMess = "Fields cannot be empty: name, specialization, FROM ";
+      this.errorMess = "Fields cannot be empty: Specialization, Start of studies, Education ";
     }
   }
 

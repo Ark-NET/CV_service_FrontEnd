@@ -1,99 +1,99 @@
 <div id="body_div">
-<!---------------------------->
-    <div class="logo_block">
-      <div class="area">G i ena_Code_Dev</div>
-    </div>
-<!--------------------------------------------------->
-<div class="central_content">
-  <div class="authoriation_panel container">
-    <div class="top_input row">
-      <div class="panel_input col-xs col-sm col-md">
-        <div>
-          <label for="exampleInputEmail1">Login*</label>
-        </div>
-        <div>
-          <input type="text" class="form-control" aria-describedby="emailHelp">
-        </div>
-      </div>
-
-      <div class="panel_input col-xs col-sm col-md">
-        <div>
-          <label for="exampleInputEmail1">Name FullName*</label>
-        </div>
-        <div>
-          <input type="text" class="form-control" aria-describedby="emailHelp">
-        </div>
-      </div>
-      
-    </div>
-
-    <div class="row">
-      <div class="panel_input col-xs col-sm col-md">
-        <div>
-          <label for="exampleInputEmail1">Email*</label>
-        </div>
-        <div>
-          <input type="email" class="form-control" aria-describedby="emailHelp">
-        </div>
-      </div>
-      <div class="panel_input col-xs col-sm col-md">
-        <div>
-          <label for="exampleInputEmail1">Phone*</label>
-        </div>
-        <div>
-          <input type="tel" class="form-control" aria-describedby="emailHelp">
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="panel_input col-xs col-sm col-md">
-        <div>
-          <label for="exampleInputPassword1">Password*</label>
-        </div>
-        <div>
-          <input type="password" class="form-control" id="exampleInputPassword1"/>
-        </div>
-      </div>
-      <div class="panel_input col-xs col-sm col-md">
-        <div>
-          <label for="exampleInputPassword1">Confirm password*</label>
-        </div>
-        <div>
-          <input type="password" class="form-control" id="exampleInputPassword2"/>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="row">
-      <div class="btn_group col-xs col-sm col-md">
-        <div>
-          <button type="button" class="btn btn-primary" (click)="registrationUser()">Registration</button>
-        </div>
-      </div>
-      <div class="btn_group col-xs col-sm col-md">
-        <div>
-          <button type="button" class="btn btn-danger" (click)="cancelActio()">Cancel</button>
-        </div>
-      </div>
-    </div>
-    
+  <!---------------------------->
+  <div class="logo_block">
+    <div class="area">G i ena_Code_Dev</div>
   </div>
-</div>
+  <!--------------------------------------------------->
+  <div class="central_content">
+    <div class="authoriation_panel container">
+      <div class="top_input row">
+        <div class="panel_input col-xs col-sm col-md">
+          <div>
+            <label for="exampleInputEmail1">Login*</label>
+          </div>
+          <div>
+            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.login" />
+          </div>
+        </div>
 
-<!---------------------------------------------------------------->
+        <div class="panel_input col-xs col-sm col-md">
+          <div>
+            <label for="exampleInputEmail1">Name FullName*</label>
+          </div>
+          <div>
+            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.full_name" />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="panel_input col-xs col-sm col-md">
+          <div>
+            <label for="exampleInputEmail1">Email*</label>
+          </div>
+          <div>
+            <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.email" />
+          </div>
+        </div>
+        <div class="panel_input col-xs col-sm col-md">
+          <div>
+            <label for="exampleInputEmail1">Phone*</label>
+          </div>
+          <div>
+            <input type="tel" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.phone" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="panel_input col-xs col-sm col-md">
+          <div>
+            <label for="exampleInputPassword1">Password*</label>
+          </div>
+          <div>
+            <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="user.password" />
+          </div>
+        </div>
+        <div class="panel_input col-xs col-sm col-md">
+          <div>
+            <label for="exampleInputPassword1">Confirm password*</label>
+          </div>
+          <div>
+            <input type="password" class="form-control" id="exampleInputPassword2" [(ngModel)]="confirm_password"/>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="btn_group col-xs col-sm col-md">
+          <div>
+            <button type="button" class="btn btn-primary" (click)="registrationUser()">Registration</button>
+          </div>
+        </div>
+        <div class="btn_group col-xs col-sm col-md">
+          <div>
+            <button type="button" class="btn btn-danger" (click)="cancelActio()">Cancel</button>
+          </div>
+        </div>
+        <div class="errorMess">{{errorMess}}</div>
+      </div>
+    </div>
+  </div>
+
+  <!---------------------------------------------------------------->
   <div class="footer_content">
     <h6>Developers</h6>
     <div class="developers">
-       <div>
-           <h6>cminskii5@gmail.com</h6>
-           <h6>makskoz81@gmail.com</h6>
-       </div>
-       <div>
-           <h6>onufk1989@gmail.com</h6>
-           <h6>artyr4ik11@gmail.com</h6>
-       </div>
+      <div>
+        <h6>cminskii5@gmail.com</h6>
+        <h6>makskoz81@gmail.com</h6>
+      </div>
+      <div>
+        <h6>onufk1989@gmail.com</h6>
+        <h6>artyr4ik11@gmail.com</h6>
+      </div>
     </div>
   </div>
 

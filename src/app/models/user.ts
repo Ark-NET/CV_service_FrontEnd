@@ -61,16 +61,4 @@ export class User {
     this.jobs = jobs;
   }
 
-  setRegistartionUserData(
-    full_name: string, login: string,
-    password: string, email: string, phone: string) {
-
-    this.full_name = full_name;
-    this.login = login;
-    this.password = password;
-    this.email = email;
-    this.phone = phone;
-  }
-
-
 }

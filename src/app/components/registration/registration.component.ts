@@ -13,11 +13,8 @@ export class RegistrationComponent implements OnInit {
 
   public errorMess = "";
 
-  public full_name = ""
-  public login = ""
-  public password = ""
-  public email = ""
-  public phone = ""
+  public user = new User();
+  public confirm_password = "";
   constructor(
     private router: Router,
     private request: RequestDBService,
@@ -29,41 +26,45 @@ export class RegistrationComponent implements OnInit {
   }
 
 
-  registrationUser() {
+  public registrationUser(): void {
+
     if (this.formValidation()) {
 
-      const user = new User();
-      user.setRegistartionUserData(this.full_name, this.login, this.password, this.email, this.phone);
-
-      this.request.userADD(user).subscribe((data) => {
+      this.request.userADD(this.user).subscribe((data) => {
 
         if (data.result) {
           this.storage.setLocalStorage({ "id": data.id, "login": data.login, "password": data.password });
+          this.router.navigate(['edit']);
         }
         else {
-          this.errorMess = "Error";
+          this.errorMess = "Registration error, please try again later";
         }
       }, (err) => {
         console.log(err);
-        this.errorMess = "Error";
+        this.errorMess = "Registration error, please try again later";
       });
-
-      this.router.navigate(['edit']);
+    }
+    else {
+      this.errorMess = "All fields must be filled"
     }
   }
 
-  cancelActio() {
+  public cancelActio(): void {
     this.router.navigate(['']);
   }
 
   private formValidation(): boolean {
     const arrValidationFilde: Array<boolean> = []
 
-    arrValidationFilde.push(this.validation.isEmpty(this.full_name));
-    arrValidationFilde.push(this.validation.isEmpty(this.login));
-    arrValidationFilde.push(this.validation.isEmpty(this.phone));
-    arrValidationFilde.push(this.validation.isEmpty(this.password));
-    arrValidationFilde.push(this.validation.isEmpty(this.email));
+    arrValidationFilde.push(this.validation.isEmpty(this.user.full_name));
+    arrValidationFilde.push(this.validation.isEmpty(this.user.login));
+    arrValidationFilde.push(this.validation.isEmpty(this.user.phone));
+    arrValidationFilde.push(this.validation.isEmpty(this.user.password));
+    arrValidationFilde.push(this.validation.isEmpty(this.user.email));
+
+    arrValidationFilde.push(!this.validation.isEqual(this.user.password, this.confirm_password))
+    console.dir(arrValidationFilde);
+    console.dir(this.user);
 
     return arrValidationFilde.indexOf(true) >= 0 ? false : true;
   }
