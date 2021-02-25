@@ -11,11 +11,11 @@ import { User } from "../../models/user"
 export class CvViewModelComponent implements OnInit {
 
   public id: number;
+  public user: User = new User();
   constructor(
 
     private activateRoute: ActivatedRoute,
-    private request: RequestDBService,
-    private user: User
+    private request: RequestDBService
   ) {
 
     this.id = activateRoute.snapshot.params['id'];
