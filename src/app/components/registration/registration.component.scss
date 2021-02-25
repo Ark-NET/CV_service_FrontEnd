@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+//start head panel
 
 #body_div{
   position: absolute; 
@@ -59,73 +60,68 @@
     }
 
 }
+//end head panel
 /*-----------------------------------------------------*/
 .central_content{
   width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
-}
+  margin: 1% 0 10% 0 ;
 
-.authoriation_panel{
-  margin: 5% 0 5% 0;
-  display: flex;
-  width: 500px;
-  height: 400px;
-  justify-content: center;
-  border: 2px solid black;
-  border-radius: 10px;
-  background-color: rgb(161, 173, 185);
-  box-shadow: rgba(0, 0, 0, 0.700) 15px 12px 20px;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-   -ms-transition: all 1s ease;
-  -o-transition: all 1s ease;
-   transition: all 1s ease;
-}
-
-.form{
-  margin: 8% 0 0 0;
-  width: 80%;
+  .authoriation_panel{
+    margin: 10% 0 10% 0;
+    padding: 50px 0 50px 0;
+    width: 900px;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(161, 173, 185);
+    box-shadow: rgba(0, 0, 0, 0.700) 15px 12px 20px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+     -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+     transition: all 1s ease;
+  }
   
-
-  .block_input{
-    display: flex;
-    justify-content: space-around;
-    margin: 12px 0 0 0; 
+  .authoriation_panel:hover{
+    box-shadow: rgb(253, 253, 253) 0px 0px 90px;
+    -webkit-box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgba(255, 255, 255, 0.808);
+    -moz-box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgb(255, 255, 255, 0.808);
+    box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgb(255, 255, 255, 0.808);
+    transform: scale(1);
   }
+  
+}
 
-  .btn_group{
-      width: 100%;
-      text-align: center;
-      button{
-        margin: 25px 0 0 0;
-        width: 150px;
-      }
+
+
+.panel_input{
+  input{
+    width: 80%;
+    padding: 0 0 0 5px;
+    margin: 0 0 3% 10%;
+    box-shadow: rgba(0, 0, 0, 0.700) 5px 3px 10px;
+  }
+  input:hover{
+    box-shadow: rgba(0, 0, 0, 0.700) 2px 1px 5px;
+  }
+  label{
+    margin: 2% 0 0 10%;
   }
 }
 
-input{
-        height: 32px;
-        box-shadow: rgba(0, 0, 0, 0.700) 5px 3px 10px;
-        padding: 0 0 0 5px;
-    }
-
-
-  input:hover{
-      box-shadow: rgba(0, 0, 0, 0.700) 2px 1px 5px;
-  }
-
-.authoriation_panel:hover{
-  box-shadow: rgb(253, 253, 253) 0px 0px 90px;
-  -webkit-box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgba(255, 255, 255, 0.808);
-  -moz-box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgb(255, 255, 255, 0.808);
-  box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgb(255, 255, 255, 0.808);
-  transform: scale(1);
+.btn_group{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
   button{
+    
       width: 200px;
-      height: 32px;
+      height: 35px;
+      margin: 30px 0 10px 0;
       box-shadow: rgba(0, 0, 0, 0.700) 5px 3px 10px;
   }
 
@@ -134,7 +130,10 @@ input{
   }
 /*-------------------------------------------------------*/
 .footer_content{
-  margin: 100px 0 0 0;
+  margin: 5% 0 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   text-align: center;
   width: 100%;
   height: 78px;

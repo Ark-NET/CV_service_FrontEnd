@@ -1,17 +1,132 @@
-<div *ngFor="let item of user.jobs">
-  <input type="text" [(ngModel)]="item.job" />
-  <input type="text" [(ngModel)]="item.work_status" />
-  <input type="date" [(ngModel)]="item.from_year" />
-  <input type="date" [(ngModel)]="item.to_year" />
-  <input type="text" [(ngModel)]="item.about" />
-  <input type="button" (click)="deleteJob(item)" value="DELETE" />
+<div class="container" *ngFor="let item of user.jobs">
+
+  <div class="row">
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="last_jobe">last job place</label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="item.job" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="position">Dolzhnost</label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="item.work_status" class="form-control"/>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="start_work">start work</label>
+      </div>
+      <div>
+        <input type="date" [(ngModel)]="item.from_year" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="end_work">end work</label>
+      </div>
+      <div>
+        <input type="date" [(ngModel)]="item.to_year" class="form-control"/>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="about_work">About your work</label>
+      </div>
+      <div>
+        <textarea cols="80" rows="3" [(ngModel)]="item.about" class="form-control"></textarea>
+      </div>
+    </div>
+    <div class="btnDiv">
+      <button type="button" (click)="deleteJob(item)" value="DELETE" class="btn btn-danger">DELETE</button>
+    </div>
+  </div>
+
 </div>
-<div>
-  <input type="text" [(ngModel)]="job" />
-  <input type="text" [(ngModel)]="work_status" />
-  <input type="date" [(ngModel)]="from_year" />
-  <input type="date" [(ngModel)]="to_year" />
-  <input type="text" [(ngModel)]="about" />
-  <input type="button" (click)="addJob()" value="ADD" />
-  <div>{{errorMess}}</div>
+<!---------------------------------------------->
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="last_jobe">last job place</label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="job" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="position">Dolzhnost</label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="work_status" class="form-control"/>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="start_work">start work</label>
+      </div>
+      <div>
+        <input type="date" [(ngModel)]="from_year" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="end_work">end work</label>
+      </div>
+      <div>
+        <input type="date" [(ngModel)]="to_year" class="form-control"/>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="about_work">About your work</label>
+      </div>
+      <div>
+        <textarea cols="80" rows="3" [(ngModel)]="about" class="form-control"></textarea>
+      </div>
+    </div>
+    <div class="btnDiv">
+      <button type="button" (click)="addJob()" value="ADD" class="btn btn-success">ADD</button>
+    </div>
+    <div>{{errorMess}}</div>
+
+  </div>
 </div>
+

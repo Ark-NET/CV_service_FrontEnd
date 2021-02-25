@@ -1,11 +1,54 @@
-<div *ngFor="let item of user.links">
-  <input type="text" [(ngModel)]="item.name" />
-  <input type="text" [(ngModel)]="item.link" />
-  <input type="button" (click)="deleteLink(item)" value="DELETE" />
+<div class="container" *ngFor="let item of user.links">
+  <div class="row">
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="link_social">name social</label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="item.name" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="link_social">Link</label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="item.link" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="btnDiv">
+      <button type="button" (click)="deleteLink(item)" value="DELETE" class="btn btn-danger">DELETE</button>
+    </div>
+
+  </div>
 </div>
-<div>
-  <input type="text" [(ngModel)]="name" />
-  <input type="text" [(ngModel)]="link" />
-  <input type="button" (click)="addLink()" value="ADD" />
-  <div>{{errorMess}}</div>
+<!----------------------------------------------->
+<div class="container">
+  <div class="row">
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="link_social">name social</label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="name" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="panel_input col-xs col-sm col-md">
+      <div>
+        <label for="link_social">Link</label>
+      </div>
+      <div>
+        <input type="text" [(ngModel)]="link" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="btnDiv">
+      <button type="button" (click)="addLink()" value="ADD" class="btn btn-success">ADD</button>
+      <div>{{errorMess}}</div>
+    </div>
+  </div>
 </div>

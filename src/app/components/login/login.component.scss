@@ -6,7 +6,7 @@
 #body_div{
   position: absolute; 
   width: 100%;
-  height:auto;
+  height: 100%;
   background-image: url('../../../img/rustic-brick-wall-background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -68,10 +68,9 @@
 }
 
 .authoriation_panel{
-  margin: 5% 0 5% 0;
+  margin: 8% 0 8% 0;
   display: flex;
   width: 500px;
-  height: 400px;
   justify-content: center;
   border: 2px solid black;
   border-radius: 10px;
@@ -82,6 +81,15 @@
    -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
    transition: all 1s ease;
+}
+
+
+.authoriation_panel:hover{
+  box-shadow: rgb(253, 253, 253) 0px 0px 90px;
+  -webkit-box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgba(255, 255, 255, 0.808);
+  -moz-box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgb(255, 255, 255, 0.808);
+  box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgb(255, 255, 255, 0.808);
+  transform: scale(1);
 }
 
 .form{
@@ -108,6 +116,7 @@
   .btn_group{
       width: 100%;
       text-align: center;
+      margin: 0 0 50px 0;
       button{
         margin: 25px 0 0 0;
         width: 150px;
@@ -126,13 +135,7 @@ input{
       box-shadow: rgba(0, 0, 0, 0.700) 2px 1px 5px;
   }
 
-.authoriation_panel:hover{
-  box-shadow: rgb(253, 253, 253) 0px 0px 90px;
-  -webkit-box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgba(255, 255, 255, 0.808);
-  -moz-box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgb(255, 255, 255, 0.808);
-  box-shadow: 0 0 120px rgb(255, 255, 255), inset 0 0 60px rgb(255, 255, 255, 0.808);
-  transform: scale(1);
-}
+
   button{
       width: 200px;
       height: 32px;
@@ -144,7 +147,9 @@ input{
   }
 /*-------------------------------------------------------*/
 .footer_content{
-  margin: 100px 0 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   text-align: center;
   width: 100%;
   height: 78px;

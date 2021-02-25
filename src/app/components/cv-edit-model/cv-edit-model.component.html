@@ -1,120 +1,137 @@
 <div id="body_div">
+
   <!--start head panel-->
   <div class="logo_block">
+    
     <div class="area">G i ena_Code_Dev</div>
+    <div class="logout_links">
+       
+      <div>
+        <button class="btn btn-info">Log Out</button>
+      </div>
+         
+      <div>
+        <label for="*">This for user links</label>
+        <div>
+          <small>*click for copy your link</small>
+        </div>
+      </div>
+
+    </div>
+   
   </div>
   <!--end head panel-->
 
 
   <!--start body panel-->
+  
   <div class="central_content">
-    <div class="authoriation_panel">
-      <div class="panel_input">
+    <div class="authoriation_panel container">
+      <div class="row">
+        <div class="panel_photo col-xs col-sm col-md">
 
-        <div class="photo_user">
-          <img src="{{returnImg}}" alt="">
+          <div class="photo_user col-xs col-sm col-md">
+            <img src="{{returnImg}}" alt="">
+          </div>
+  
+          <div class="input_img col-xs col-sm col-md">
+            <ngx-dropzone (change)="onSelect($event)" [multiple]="false" [expandable]="false" [maxFileSize]="1000000" accept="image/jpeg,image/jpg,image/png" class="form-control fotoPanel">
+              <ngx-dropzone-label>Drop it, photo!</ngx-dropzone-label>
+    
+              <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)" class="nameFoto">
+    
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                  
+              </ngx-dropzone-preview>
+    
+            </ngx-dropzone>
+          </div>
         </div>
-
-        <div>
-          <label for="F_L_name">First_Last_name*</label>
-          <input id="F_L_name" type="text" class="form-control" aria-describedby="emailHelp"
-            [(ngModel)]="user.full_name">
-        </div>
-
-        <div>
-          <label for="email">email*</label>
-          <input id="email" type="email" class="form-control" placeholder="example@email.com" value="{{user.email}}"
-            [(ngModel)]="user.email" />
-        </div>
-
-        <div>
-          <label for="phone">mobile phone*</label>
-          <input id="phone" type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}"
-            maxlength="12" placeholder="380XXXXXXXXXX" [(ngModel)]="user.phone" />
-        </div>
-
-        <div>
-          <label for="photo">Photo</label>
-          <!-- <input id="photo" type="file" class="form-control" [(ngModel)]="user.face"/> -->
-          <ngx-dropzone (change)="onSelect($event)" [multiple]="false" [expandable]="false" [maxFileSize]="1000000"
-            accept="image/jpeg,image/jpg,image/png">
-            <ngx-dropzone-label>Drop it, photo!</ngx-dropzone-label>
-            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-            </ngx-dropzone-preview>
-          </ngx-dropzone>
-        </div>
-
-        <!-- <div>
-                    <label for="link_social">Link</label>
-                    <input id="link_social" type="text" class="form-control" />
-                </div>
-
-                <div>
-                    <label for="about_you">About you</label>
-                    <input id="about_you" type="text" class="form-control" />
-                </div> -->
-        <app-link [user]="user" [basket]="basket"></app-link>
-
-        <div class="skyline"></div>
-
-        <!-- <div>
-                    <label for="last_jobe">last job place</label>
-                    <input id="last_jobe" type="text" class="form-control" />
-                </div>
-
-                <div>
-                    <label for="position">Dolzhnost</label>
-                    <input id="position" type="text" class="form-control" />
-                </div>
-
-                <div>
-                    <label for="about_work">About your work</label>
-                    <input id="about_work" type="text" class="form-control" />
-                </div>
-
-                <div>
-                    <label for="start_work">start work</label>
-                    <input id="start_work" type="date" class="form-control" />
-                </div>
-                <div>
-                    <label for="end_work">end work</label>
-                    <input id="end_work" type="date" class="form-control" />
-                </div> -->
-        <app-job [user]="user" [basket]="basket"></app-job>
-        <div class="skyline"></div>
-
-        <!-- <div>
-          <label for="education">Education</label>
-          <input id="education" type="text" class="form-control" />
-        </div>
-
-        <div>
-          <label for="specialization">Specialization</label>
-          <input id="specialization" type="text" class="form-control" />
-        </div>
-
-        <div>
-          <label for="about_educ">About your education</label>
-          <input id="about_educ" type="text" class="form-control" />
-        </div>
-
-        <div>
-          <label for="start_studies">start of studies</label>
-          <input id="start_studies" type="date" class="form-control" />
-        </div>
-        <div>
-          <label for="end_studies">end of studies</label>
-          <input id="end_studies" type="date" class="form-control" />
-        </div> -->
-        <app-education [user]="user" [basket]="basket"></app-education>
-      </div>
-
-      <div class="btn_group">
-        <button type="button" class="btn btn-primary" (click)="saveUser()">Save</button>
       </div>
     </div>
   </div>
+
+
+  <div class="central_content">
+
+    <div class="authoriation_panel container">
+      <label for="*" class="head_text">Our data</label>
+      <div class="row"> 
+          <div class="panel_input col-xs col-sm col-md">
+            <div>
+              <label for="F_L_name">First_Last_name*</label>
+            </div>
+            <div>
+              <input id="F_L_name" type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.full_name"/>
+            </div>
+          </div>
+
+          <div class="panel_input col-xs col-sm col-md">
+            <div>
+              <label for="email">email*</label>
+            </div>
+            <div>
+              <input id="email" type="email" class="form-control" placeholder="example@email.com" [(ngModel)]="user.email" />
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="panel_input col-xs col-sm col-md">
+          <div>
+            <label for="phone">mobile phone*</label>
+          </div>
+          <div>
+            <input id="phone" type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}" maxlength="12" placeholder="380XXXXXXXXXX" [(ngModel)]="user.phone" />
+          </div>
+        </div>
+
+        <div class="panel_input col-xs col-sm col-md">
+          <div>
+            <label for="PredententDolzh">PredententDolzh*</label>
+          </div>
+          <div>
+            <input id="PredententDolzh" type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.position">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="central_content">
+    <div class="authoriation_panel">
+      <label for="*" class="head_text">Link social page</label>
+      <div class="panel_input">
+        <app-link [user]="user" [basket]="basket"></app-link>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="central_content">
+    <div class="authoriation_panel">
+      <label for="*" class="head_text">Jobe</label>
+      <div class="panel_input">
+        <app-job [user]="user" [basket]="basket"></app-job>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="central_content">
+    <div class="authoriation_panel">
+      <label for="*" class="head_text">Education</label>
+      <div class="panel_input">
+        <app-education [user]="user" [basket]="basket"></app-education>
+      </div>
+    </div>
+  </div>
+
+  <div class="button_Save">
+    <button type="button" class="btn btn-primary" (click)="saveUser()">Save</button>
+  </div>
+
   <!--end body panel-->
 
 

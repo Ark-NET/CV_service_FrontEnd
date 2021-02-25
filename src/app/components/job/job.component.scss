@@ -1,0 +1,32 @@
+.panel_input{
+
+    .form-control{
+      width: 80%;
+      padding: 0 0 0 5px;
+      margin: 0.5% 0 3% 10%;
+      box-shadow: rgba(0, 0, 0, 0.700) 5px 3px 10px;
+    }
+    .form-control:hover{
+      box-shadow: rgba(0, 0, 0, 0.700) 2px 1px 5px;
+    }
+    label{
+      margin: 0 0 0 10%;
+    }
+  }
+
+
+.btnDiv{
+    display: flex;
+    justify-content: center;
+    button{
+        margin: 20px 0 10px 0;
+        width: 200px;
+        height: 32px;
+        box-shadow: rgba(0, 0, 0, 0.700) 5px 3px 10px;
+      }
+    
+      button:hover{
+        box-shadow: rgba(0, 0, 0, 0.700) 2px 1px 5px;
+      }
+    
+}
