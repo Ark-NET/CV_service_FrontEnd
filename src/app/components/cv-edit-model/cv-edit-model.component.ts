@@ -71,7 +71,7 @@ export class CvEditModelComponent implements OnInit {
           if (this.user.face != null) {
             this.returnImg = this.user.face;
           }
-
+console.dir(this.user);
           sortArry(this.user.education);
         }
       },
