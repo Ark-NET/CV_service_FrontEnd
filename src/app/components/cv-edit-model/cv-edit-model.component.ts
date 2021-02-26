@@ -60,7 +60,6 @@ export class CvEditModelComponent implements OnInit {
   }
 
   private loadUser(): void {
-    this.user.setTESTdata();
     const localUser = this.storage.getLocalStorage();
     if (localUser != null) {
 
