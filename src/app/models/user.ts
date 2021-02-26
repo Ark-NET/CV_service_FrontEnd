@@ -7,7 +7,7 @@ export class User {
   password: string;
   email: string;
   phone: string;
-  face?: string;
+  face: string;
   education: Array<any>;
   links: Array<any>;
   jobs: Array<any>;

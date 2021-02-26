@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
 
 
     if (this.formValidation(login, password)) {
-
       this.request.loginPOST({ "login": this.inputlogin, "password": this.inputpassword }).subscribe(
         (data) => {
 
@@ -68,7 +67,7 @@ export class LoginComponent implements OnInit {
       );
     }
     else {
-      this.errorMess = "Fields Email address and Password cannot be empty";
+      this.errorMess = "Fields cannot be empty";
     }
   }
 

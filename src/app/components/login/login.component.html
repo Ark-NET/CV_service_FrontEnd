@@ -1,74 +1,75 @@
 <div id="body_div">
 
-    <div class="logo_block">
-      <div class="area">G i ena_Code_Dev</div>
-    </div>
+  <div class="logo_block">
+    <div class="area">G i ena_Code_Dev</div>
+  </div>
 
-    <div class="central_content">
-      <div class="authoriation_panel">
+  <div class="central_content">
+    <div class="authoriation_panel">
 
-        <div class="form">
+      <div class="form">
 
-          <div class="form-group">
-             <label for="exampleInputEmail1">Login</label>
-             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-               #exampleinputemail1 [(ngModel)]="inputlogin">
-             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-           </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Login</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            #exampleinputemail1 [(ngModel)]="inputlogin">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
 
-           <div class="form-group">
-             <label for="exampleInputPassword1">Password</label>
-             <input type="password" class="form-control" id="exampleInputPassword1" #exampleinputpassword1 [(ngModel)]="inputpassword">
-           </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" #exampleinputpassword1
+            [(ngModel)]="inputpassword">
+        </div>
 
-           <div class="form-group form-check">
-             <input type="checkbox" class="form-check-input" id="exampleCheck1" [checked] = "CheckMeOut" [(ngModel)]="CheckMeOut">
-             <label class="form-check-label" for="exampleCheck1">Remember me</label>
-           </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" [checked]="CheckMeOut"
+            [(ngModel)]="CheckMeOut">
+          <label class="form-check-label" for="exampleCheck1">Remember me</label>
+        </div>
 
-          <div>{{errorMess}}</div>
+        <div class="errorMess">{{errorMess}}</div>
 
-          <div class="btn_group">
+        <div class="btn_group">
 
-             <div>
-               <button type="button" class="btn btn-success"
-                 (click)="login(exampleinputemail1.value,exampleinputpassword1.value)">Authorization</button>
-             </div>
+          <div>
+            <button type="button" class="btn btn-success"
+              (click)="login(exampleinputemail1.value,exampleinputpassword1.value)">Authorization</button>
+          </div>
 
-             <div>
-               <small class="form-text text-muted">If you not have accoun in our system, push to Registration please</small>
-             </div>
+          <div>
+            <small class="form-text text-muted">If you not have accoun in our system, push to Registration
+              please</small>
+          </div>
 
-             <div>
-               <button type="button" class="btn btn-primary" (click)="registrationRouter()">Registration</button>
-             </div>
-
+          <div>
+            <button type="button" class="btn btn-primary" (click)="registrationRouter()">Registration</button>
           </div>
 
         </div>
 
       </div>
+
     </div>
+  </div>
 
-    <div class="footer_content">
+  <div class="footer_content">
 
-      <h6>Developers</h6>
+    <h6>Developers</h6>
 
-      <div class="developers">
-         <div>
-             <h6>cminskii5@gmail.com</h6>
-             <h6>makskoz81@gmail.com</h6>
-         </div>
-         <div>
-             <h6>onufk1989@gmail.com</h6>
-             <h6>artyr4ik11@gmail.com</h6>
-         </div>
+    <div class="developers">
+      <div>
+        <h6>cminskii5@gmail.com</h6>
+        <h6>makskoz81@gmail.com</h6>
       </div>
-
+      <div>
+        <h6>onufk1989@gmail.com</h6>
+        <h6>artyr4ik11@gmail.com</h6>
+      </div>
     </div>
 
- 
+  </div>
+
+
 
 </div>
-
-

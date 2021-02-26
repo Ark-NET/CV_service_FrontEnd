@@ -34,8 +34,6 @@ export class CvEditModelComponent implements OnInit {
 
   public ngOnInit(): void {
     this.loadUser();
-
-    // this.user.setTESTdata();
   }
   private cutTime(arr: Array<any>, reg: RegExp): void {
 
@@ -49,10 +47,20 @@ export class CvEditModelComponent implements OnInit {
 
     })
   }
-
+  private uploadIMG(user: User,file:File) { //вынести в файл и переписать
+    var fd = new FormData();
+    fd.append("image", file);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://api.imageban.ru/v1");
+    xhr.onload = () => {
+      user.face = JSON.parse(xhr.responseText).data.link;
+    }
+    xhr.setRequestHeader('Authorization', 'TOKEN prpEfmDtojDGYFrQSxHz');
+    xhr.send(fd);
+  }
 
   private loadUser(): void {
-
+    this.user.setTESTdata();
     const localUser = this.storage.getLocalStorage();
     if (localUser != null) {
 
@@ -68,10 +76,10 @@ export class CvEditModelComponent implements OnInit {
           this.cutTime(this.user.education, /T.+Z/)
           this.cutTime(this.user.jobs, /T.+Z/)
 
-          if (this.user.face != null) {
+          if (this.user.face != null && this.user.face != "") {
             this.returnImg = this.user.face;
           }
-console.dir(this.user);
+
           sortArry(this.user.education);
         }
       },
@@ -88,8 +96,8 @@ console.dir(this.user);
     this.files.push(...event.addedFiles);
 
     this.readFile(this.files[0]).then(fileContents => {
-      this.user.face = fileContents as string;
-      this.returnImg = this.user.face;
+      // this.user.face = fileContents;
+      this.returnImg = fileContents as string;;
     })
   }
 
@@ -122,6 +130,7 @@ console.dir(this.user);
   }
 
   public saveUser(): void {
+    this.uploadIMG(this.user,this.files[0]);
     this.request.userUPD(this.user).subscribe((data) => {
       this.clearBasket();
     },

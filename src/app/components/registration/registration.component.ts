@@ -12,7 +12,6 @@ import { ValidationService } from "../../services/validation.service"
 export class RegistrationComponent implements OnInit {
 
   public errorMess = "";
-
   public user = new User();
   public confirm_password = "";
   constructor(
@@ -63,8 +62,6 @@ export class RegistrationComponent implements OnInit {
     arrValidationFilde.push(this.validation.isEmpty(this.user.email));
 
     arrValidationFilde.push(!this.validation.isEqual(this.user.password, this.confirm_password))
-    console.dir(arrValidationFilde);
-    console.dir(this.user);
 
     return arrValidationFilde.indexOf(true) >= 0 ? false : true;
   }
