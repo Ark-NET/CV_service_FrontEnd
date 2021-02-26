@@ -49,6 +49,8 @@ export class CvEditModelComponent implements OnInit {
   }
 
   private loadUser(): void {
+
+    this.user.setTESTdata();
     const localUser = this.storage.getLocalStorage();
     if (localUser != null) {
 
@@ -69,6 +71,7 @@ export class CvEditModelComponent implements OnInit {
           }
 
           sortArry(this.user.education);
+
         }
       },
         (err) => {

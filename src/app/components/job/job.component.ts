@@ -53,7 +53,7 @@ export class JobComponent  {
       this.errorMess = "";
     }
     else {
-      this.errorMess = "Fields cannot be empty: JOB, STATUS, FROM ";
+      this.errorMess = "Fields cannot be empty: 'Last job place', 'Start work', 'Position' ";
     }
 
   }

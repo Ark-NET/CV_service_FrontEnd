@@ -13,7 +13,7 @@
       margin: 0 0 0 10%;
     }
   }
-  
+
 .form-control{
     margin: 5px 0 0 0;
 }
@@ -27,9 +27,14 @@
         height: 32px;
         box-shadow: rgba(0, 0, 0, 0.700) 5px 3px 10px;
       }
-    
+
       button:hover{
         box-shadow: rgba(0, 0, 0, 0.700) 2px 1px 5px;
       }
-    
+
+}
+.errorMess{
+  color: rgba(182, 7, 7, 0.829);
+  font-weight: bold;
+  text-align: center;
 }

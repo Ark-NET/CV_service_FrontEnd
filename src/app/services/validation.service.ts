@@ -28,4 +28,32 @@ export class ValidationService {
     else return false;
   }
 
+  public isEqualDate(date1: Date, date2: Date): boolean {
+
+    if (date1 && date2) {
+
+      if (date1.getTime() == date2.getTime()) {
+        return true;
+      }
+      else return false;
+    }
+    else return false;
+  }
+
+  public startDateIsGreater(start: Date, end?: Date): boolean {
+
+    if (start && end) {
+
+      if (start.getTime() >= end.getTime()) {
+        return false;
+      }
+      else return true;
+    }
+    else {
+      if (end == null) return false;
+      else return true;
+    }
+
+  }
+
 }

@@ -57,7 +57,7 @@ export class EducationComponent {
       this.errorMess = "";
     }
     else {
-      this.errorMess = "Fields cannot be empty: Specialization, Start of studies, Education ";
+      this.errorMess = "Fields cannot be empty: 'Specialization', 'Start of studies', 'Education' ";
     }
   }
 
@@ -68,7 +68,7 @@ export class EducationComponent {
     arrValidationFilde.push(this.validation.isEmpty(this.name));
     arrValidationFilde.push(this.validation.isEmpty(this.specialization));
     arrValidationFilde.push(this.validation.isEmpty(this.from_year));
-
+    arrValidationFilde.push(!this.validation.startDateIsGreater(new Date(this.from_year), new Date(this.to_year)));
     return arrValidationFilde.indexOf(true) >= 0 ? false : true;
   }
 }

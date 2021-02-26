@@ -32,7 +32,7 @@ export class LinkComponent {
       this.errorMess = "";
     }
     else {
-      this.errorMess = "Fill in all fields to add a link";
+      this.errorMess = "Field cannot be empty";
     }
   }
 

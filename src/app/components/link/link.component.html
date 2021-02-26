@@ -6,7 +6,7 @@
         <label for="link_social">name social</label>
       </div>
       <div>
-        <input type="text" [(ngModel)]="item.name" class="form-control"/>
+        <input type="text" [(ngModel)]="item.name" class="form-control" />
       </div>
     </div>
 
@@ -15,7 +15,7 @@
         <label for="link_social">Link</label>
       </div>
       <div>
-        <input type="text" [(ngModel)]="item.link" class="form-control"/>
+        <input type="text" [(ngModel)]="item.link" class="form-control" />
       </div>
     </div>
 
@@ -33,7 +33,7 @@
         <label for="link_social">name social</label>
       </div>
       <div>
-        <input type="text" [(ngModel)]="name" class="form-control"/>
+        <input type="text" [(ngModel)]="name" class="form-control" />
       </div>
     </div>
 
@@ -42,13 +42,12 @@
         <label for="link_social">Link</label>
       </div>
       <div>
-        <input type="text" [(ngModel)]="link" class="form-control"/>
+        <input type="text" [(ngModel)]="link" class="form-control" />
       </div>
     </div>
-
+    <div class="errorMess">{{errorMess}}</div>
     <div class="btnDiv">
       <button type="button" (click)="addLink()" value="ADD" class="btn btn-success">ADD</button>
-      <div>{{errorMess}}</div>
     </div>
   </div>
 </div>
