@@ -18,11 +18,20 @@ export class RequestDBService {
 
   private apiBaseURL = 'http://localhost:5000';
 
+  private apiBaseURL_imageban = "https://api.imageban.ru/v1"
+
   private httpOptions = {
 
     headers: new HttpHeaders({ Accept: 'application/json' })
 
   };
+
+  private httpOptions_imageban = {
+
+    headers: new HttpHeaders({ Authorization: 'TOKEN prpEfmDtojDGYFrQSxHz' , Accept: 'application/json' })
+
+  };
+
   constructor(
     private httpClient: HttpClient) { };
 
@@ -42,7 +51,7 @@ export class RequestDBService {
 
   public userUPD(user: User): Observable<any> {
 
-    return this.httpClient.post(this.apiBaseURL+'/userObject', user, this.httpOptions).pipe(catchError(this.processError));
+    return this.httpClient.post(this.apiBaseURL + '/userObject', user, this.httpOptions).pipe(catchError(this.processError));
   }
 
   public userADD(user: User): Observable<any> {
@@ -50,19 +59,23 @@ export class RequestDBService {
     return this.httpClient.post(this.apiBaseURL + "/registration", user, this.httpOptions).pipe(catchError(this.processError));
   }
 
-  public deleteData_education(id:number): Observable<any> {
+  public deleteData_education(id: number): Observable<any> {
 
-    return this.httpClient.delete(this.apiBaseURL+`/education/${id}`).pipe(catchError(this.processError));
+    return this.httpClient.delete(this.apiBaseURL + `/education/${id}`).pipe(catchError(this.processError));
   }
 
-  public deleteData_link(id:number): Observable<any> {
+  public deleteData_link(id: number): Observable<any> {
 
-    return this.httpClient.delete(this.apiBaseURL+`/link/${id}`).pipe(catchError(this.processError));
+    return this.httpClient.delete(this.apiBaseURL + `/link/${id}`).pipe(catchError(this.processError));
   }
 
-  public deleteData_job(id:number): Observable<any> {
+  public deleteData_job(id: number): Observable<any> {
 
-    return this.httpClient.delete(this.apiBaseURL+`/job/${id}`).pipe(catchError(this.processError));
+    return this.httpClient.delete(this.apiBaseURL + `/job/${id}`).pipe(catchError(this.processError));
+  }
+
+  public uploadIMG(file: FormData): Observable<any> {
+    return this.httpClient.post(this.apiBaseURL_imageban, file, this.httpOptions_imageban).pipe(catchError(this.processError));
   }
 
 }

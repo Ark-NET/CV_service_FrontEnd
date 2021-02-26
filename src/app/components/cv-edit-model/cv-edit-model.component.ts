@@ -47,17 +47,6 @@ export class CvEditModelComponent implements OnInit {
 
     })
   }
-  private uploadIMG(user: User,file:File) { //вынести в файл и переписать
-    var fd = new FormData();
-    fd.append("image", file);
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://api.imageban.ru/v1");
-    xhr.onload = () => {
-      user.face = JSON.parse(xhr.responseText).data.link;
-    }
-    xhr.setRequestHeader('Authorization', 'TOKEN prpEfmDtojDGYFrQSxHz');
-    xhr.send(fd);
-  }
 
   private loadUser(): void {
     const localUser = this.storage.getLocalStorage();
@@ -95,7 +84,6 @@ export class CvEditModelComponent implements OnInit {
     this.files.push(...event.addedFiles);
 
     this.readFile(this.files[0]).then(fileContents => {
-      // this.user.face = fileContents;
       this.returnImg = fileContents as string;;
     })
   }
@@ -129,13 +117,39 @@ export class CvEditModelComponent implements OnInit {
   }
 
   public saveUser(): void {
-    this.uploadIMG(this.user,this.files[0]);
-    this.request.userUPD(this.user).subscribe((data) => {
-      this.clearBasket();
-    },
-      (err) => {
-        console.log(err);
-      });
+
+    const action = new Promise((resolve, reject) => {
+
+      if (this.files.length > 0) {
+
+        var fd = new FormData();
+        fd.append("image", this.files[0]);
+
+        this.request.uploadIMG(fd).subscribe((data) => {
+          this.user.face = data.data.link;
+          resolve("pass");
+        }, (err) => {
+          console.dir(err);
+          reject(err);
+        })
+      }
+      else{
+        resolve("pass");
+      }
+    })
+
+    action.then(
+      (value) => {
+        console.dir(this.user);
+        this.request.userUPD(this.user).subscribe((data) => {
+          this.clearBasket();
+
+        },
+          (err) => {
+            console.log(err);
+          });
+      }
+    )
   }
 
   public loguot(): void {

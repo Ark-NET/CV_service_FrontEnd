@@ -46,8 +46,6 @@ export class LoginComponent implements OnInit {
   }
 
   login(login: string, password: string) {
-
-
     if (this.formValidation(login, password)) {
       this.request.loginPOST({ "login": this.inputlogin, "password": this.inputpassword }).subscribe(
         (data) => {

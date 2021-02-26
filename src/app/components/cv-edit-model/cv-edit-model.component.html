@@ -2,14 +2,14 @@
 
   <!--start head panel-->
   <div class="logo_block">
-    
+
     <div class="area">G i ena_Code_Dev</div>
     <div class="logout_links">
-       
+
       <div>
-        <button class="btn btn-info">Log Out</button>
+        <button class="btn btn-info" (click)="loguot()">Log Out</button>
       </div>
-         
+
       <div>
         <label for="*">This for user links</label>
         <div>
@@ -18,13 +18,13 @@
       </div>
 
     </div>
-   
+
   </div>
   <!--end head panel-->
 
 
   <!--start body panel-->
-  
+
   <div class="central_content">
     <div class="authoriation_panel container">
       <div class="row">
@@ -33,17 +33,17 @@
           <div class="photo_user col-xs col-sm col-md">
             <img src="{{returnImg}}" alt="">
           </div>
-  
+
           <div class="input_img col-xs col-sm col-md">
             <ngx-dropzone (change)="onSelect($event)" [multiple]="false" [expandable]="false" [maxFileSize]="1000000" accept="image/jpeg,image/jpg,image/png" class="form-control fotoPanel">
               <ngx-dropzone-label>Drop it, photo!</ngx-dropzone-label>
-    
+
               <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)" class="nameFoto">
-    
+
                 <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                  
+
               </ngx-dropzone-preview>
-    
+
             </ngx-dropzone>
           </div>
         </div>
@@ -56,7 +56,7 @@
 
     <div class="authoriation_panel container">
       <label for="*" class="head_text">General info</label>
-      <div class="row"> 
+      <div class="row">
           <div class="panel_input col-xs col-sm col-md">
             <div>
               <label for="F_L_name">First_Last_name*</label>
