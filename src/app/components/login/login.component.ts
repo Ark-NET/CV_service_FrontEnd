@@ -46,6 +46,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(login: string, password: string) {
+    this.isRemember({ "id": 1, "login": this.inputlogin, "password": this.inputpassword }); //нужно прикрутить JWT
+    this.router.navigate(['edit']);
     if (this.formValidation(login, password)) {
       this.request.loginPOST({ "login": this.inputlogin, "password": this.inputpassword }).subscribe(
         (data) => {

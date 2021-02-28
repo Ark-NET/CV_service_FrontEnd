@@ -9,7 +9,7 @@ import { IDisposalBasket } from '../../models/Interface';
   templateUrl: './job.component.html',
   styleUrls: ['./job.component.scss']
 })
-export class JobComponent  {
+export class JobComponent {
 
   @Input() user: User = new User();
   @Input() basket: IDisposalBasket = {
@@ -69,4 +69,27 @@ export class JobComponent  {
     return arrValidationFilde.indexOf(true) >= 0 ? false : true;
   }
 
+  public checkValidation(id: string, item: string, classCss: string = "borderError"): void {
+    if (this.validation.isEmpty(item)) {
+      document.getElementById(id)?.classList.add(classCss);
+    }
+    else document.getElementById(id)?.classList.remove(classCss);
+  }
+
+  public checkFromDate(id: string, start: string, end: string, classCss: string = "borderError"): void {
+    if (this.validation.startDateIsGreater(start, end) || this.validation.isEmpty(start)) {
+      document.getElementById(id)?.classList.add(classCss);
+    }
+    else document.getElementById(id)?.classList.remove(classCss);
+  }
+
+  public checkToDate(id: string, start: string, end: string, classCss: string = "borderError"): void {
+    if (end != "" && end != null) {
+      if (this.validation.startDateIsGreater(start, end)) {
+        document.getElementById(id)?.classList.add(classCss);
+      }
+      else document.getElementById(id)?.classList.remove(classCss);
+    }
+    else document.getElementById(id)?.classList.remove(classCss);
+  }
 }

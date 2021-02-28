@@ -3,11 +3,13 @@
 
     <div class="panel_input col-xs col-sm col-md">
       <div>
-        <label for="link_social">name social</label>
+        <label for="link_social">Name</label>
       </div>
       <div>
-        <input type="text" [(ngModel)]="item.name" class="form-control" />
+        <input id="{{item.id}}_links_name" type="text" [(ngModel)]="item.name" class="form-control"
+          (ngModelChange)="checkValidation(item.id+'_links_name',item.name)" />
       </div>
+      <div></div>
     </div>
 
     <div class="panel_input col-xs col-sm col-md">
@@ -15,14 +17,14 @@
         <label for="link_social">Link</label>
       </div>
       <div>
-        <input type="text" [(ngModel)]="item.link" class="form-control" />
+        <input id="{{item.id}}_links_link" type="text" [(ngModel)]="item.link" class="form-control"
+          (ngModelChange)="checkValidation(item.id+'_links_link',item.link)" />
       </div>
     </div>
 
     <div class="btnDiv">
       <button type="button" (click)="deleteLink(item)" value="DELETE" class="btn btn-danger">DELETE</button>
     </div>
-
   </div>
 </div>
 <!----------------------------------------------->
@@ -30,10 +32,10 @@
   <div class="row">
     <div class="panel_input col-xs col-sm col-md">
       <div>
-        <label for="link_social">name social</label>
+        <label for="name_social">Name</label>
       </div>
       <div>
-        <input type="text" [(ngModel)]="name" class="form-control" />
+        <input type="text" id="name_social" [(ngModel)]="name" class="form-control" />
       </div>
     </div>
 
@@ -42,7 +44,7 @@
         <label for="link_social">Link</label>
       </div>
       <div>
-        <input type="text" [(ngModel)]="link" class="form-control" />
+        <input type="text" id="link_social" [(ngModel)]="link" class="form-control" />
       </div>
     </div>
     <div class="errorMess">{{errorMess}}</div>

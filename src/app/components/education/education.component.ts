@@ -68,7 +68,31 @@ export class EducationComponent {
     arrValidationFilde.push(this.validation.isEmpty(this.name));
     arrValidationFilde.push(this.validation.isEmpty(this.specialization));
     arrValidationFilde.push(this.validation.isEmpty(this.from_year));
-    arrValidationFilde.push(!this.validation.startDateIsGreater(new Date(this.from_year), new Date(this.to_year)));
+    arrValidationFilde.push(!this.validation.startDateIsGreater(this.from_year, this.to_year));
     return arrValidationFilde.indexOf(true) >= 0 ? false : true;
+  }
+
+  public checkValidation(id: string, item: string, classCss: string = "borderError"): void {
+    if (this.validation.isEmpty(item)) {
+      document.getElementById(id)?.classList.add(classCss);
+    }
+    else document.getElementById(id)?.classList.remove(classCss);
+  }
+
+  public checkFromDate(id: string, start: string, end: string, classCss: string = "borderError"): void {
+    if (this.validation.startDateIsGreater(start, end) || this.validation.isEmpty(start)) {
+      document.getElementById(id)?.classList.add(classCss);
+    }
+    else document.getElementById(id)?.classList.remove(classCss);
+  }
+
+  public checkToDate(id: string, start: string, end: string, classCss: string = "borderError"): void {
+    if (end != "" && end != null) {
+      if (this.validation.startDateIsGreater(start, end)) {
+        document.getElementById(id)?.classList.add(classCss);
+      }
+      else document.getElementById(id)?.classList.remove(classCss);
+    }
+    else document.getElementById(id)?.classList.remove(classCss);
   }
 }

@@ -40,17 +40,19 @@ export class ValidationService {
     else return false;
   }
 
-  public startDateIsGreater(start: Date, end?: Date): boolean {
-
+  public startDateIsGreater(start: string, end: string): boolean {
     if (start && end) {
 
-      if (start.getTime() >= end.getTime()) {
-        return false;
+      const startDate=new Date(start);
+      const endDate=new Date(end);
+      if (startDate.getTime() >= endDate.getTime()) {
+        console.log(">=")
+        return true;
       }
-      else return true;
+      else return false;
     }
     else {
-      if (end == null) return false;
+      if (start!=null && end == null) return false;
       else return true;
     }
 

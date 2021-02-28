@@ -41,7 +41,8 @@
             <label for="exampleInputEmail1">Phone*</label>
           </div>
           <div>
-            <input type="tel" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.phone" />
+            <input type="tel" class="form-control" pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}"
+             aria-describedby="emailHelp" maxlength="12" [(ngModel)]="user.phone" />
           </div>
         </div>
       </div>

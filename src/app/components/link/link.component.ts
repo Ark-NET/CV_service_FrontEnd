@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from "../../models/user"
 import { ValidationService } from "../../services/validation.service"
-import { sortArry } from "../../services/template-functions.service";
 import { IDisposalBasket } from '../../models/Interface';
 
 @Component({
@@ -18,6 +17,7 @@ export class LinkComponent {
     jobs: []
   };
   public errorMess = "";
+  public errorMessItem = "";
   public name = "";
   public link = "";
 
@@ -42,6 +42,14 @@ export class LinkComponent {
       this.user.links.splice(index, 1);
       this.basket.links.push(item.id);
     }
+  }
+
+  public checkValidation(id: string, item: string, classCss: string = "borderError"): void {
+
+    if (this.validation.isEmpty(item)) {
+      document.getElementById(id)?.classList.add(classCss);
+    }
+    else document.getElementById(id)?.classList.remove(classCss);
   }
 
 }

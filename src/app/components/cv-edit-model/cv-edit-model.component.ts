@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { RequestDBService } from "../../services/httpClient";
 import { User } from 'src/app/models/user';
 import { sortArry, deleteItemArray } from "../../services/template-functions.service";
-import { IDisposalBasket } from '../../models/Interface'
+import { IDisposalBasket } from '../../models/Interface';
+import { ValidationService } from '../../services/validation.service';
 
-const defaulteImg = "../../../assets/img/png-transparent-computer-icons-user-profile-priest-miscellaneous-avatar-user.png"
+const defaulteImg = "../../../assets/img/png-transparent-computer-icons-user-profile-priest-miscellaneous-avatar-user.png";
 
 @Component({
   selector: 'app-cv-edit-model',
@@ -14,7 +15,7 @@ const defaulteImg = "../../../assets/img/png-transparent-computer-icons-user-pro
   styleUrls: ['./cv-edit-model.component.scss']
 })
 export class CvEditModelComponent implements OnInit {
-  private errorMess = "";
+  public errorMess = "";
   public user = new User();
   public files: File[] = [];
   public returnImg = "";
@@ -28,6 +29,7 @@ export class CvEditModelComponent implements OnInit {
     private storage: LocalStorageService,
     private router: Router,
     private request: RequestDBService,
+    private validation: ValidationService
   ) {
     this.returnImg = defaulteImg;
   }
@@ -51,6 +53,8 @@ export class CvEditModelComponent implements OnInit {
   private loadUser(): void {
 
     this.user.setTESTdata();
+    this.cutTime(this.user.education, /T.+Z/)
+    this.cutTime(this.user.jobs, /T.+Z/)
     const localUser = this.storage.getLocalStorage();
     if (localUser != null) {
 
@@ -121,38 +125,41 @@ export class CvEditModelComponent implements OnInit {
 
   public saveUser(): void {
 
-    const action = new Promise((resolve, reject) => {
+    if (this.validationUser()) {
+      console.dir(this.user)
 
-      if (this.files.length > 0) {
+      const action = new Promise((resolve, reject) => {
 
-        var fd = new FormData();
-        fd.append("image", this.files[0]);
+        if (this.files.length > 0) {
 
-        this.request.uploadIMG(fd).subscribe((data) => {
-          this.user.face = data.data.link;
+          var fd = new FormData();
+          fd.append("image", this.files[0]);
+
+          this.request.uploadIMG(fd).subscribe((data) => {
+            this.user.face = data.data.link;
+            resolve("pass");
+          }, (err) => {
+            console.dir(err);
+            reject(err);
+          })
+        }
+        else {
           resolve("pass");
-        }, (err) => {
-          console.dir(err);
-          reject(err);
-        })
-      }
-      else{
-        resolve("pass");
-      }
-    })
+        }
+      })
 
-    action.then(
-      (value) => {
-        console.dir(this.user);
-        this.request.userUPD(this.user).subscribe((data) => {
-          this.clearBasket();
+      action.then(
+        (value) => {
+          this.request.userUPD(this.user).subscribe((data) => {
+            this.clearBasket();
 
-        },
-          (err) => {
-            console.log(err);
-          });
-      }
-    )
+          },
+            (err) => {
+              console.log(err);
+            });
+        }
+      )
+    }
   }
 
   public loguot(): void {
@@ -193,5 +200,41 @@ export class CvEditModelComponent implements OnInit {
 
     });
 
+  }
+
+  private validationUser(): boolean {
+    const arrValidationFilde: Array<boolean> = new Array();
+
+    arrValidationFilde.push(this.validation.isEmpty(this.user.email));
+    arrValidationFilde.push(this.validation.isEmpty(this.user.full_name));
+    arrValidationFilde.push(this.validation.isEmpty(this.user.phone));
+
+    this.user.links.forEach(element => {
+      arrValidationFilde.push(this.validation.isEmpty(element.name));
+      arrValidationFilde.push(this.validation.isEmpty(element.link));
+    });
+
+    this.user.education.forEach(element => {
+      arrValidationFilde.push(this.validation.isEmpty(element.name));
+      arrValidationFilde.push(this.validation.isEmpty(element.specialization));
+      arrValidationFilde.push(this.validation.isEmpty(element.from_year));
+      arrValidationFilde.push(this.validation.startDateIsGreater(element.from_year, element.to_year));
+    });
+
+    this.user.jobs.forEach(element => {
+      arrValidationFilde.push(this.validation.isEmpty(element.work_status));
+      arrValidationFilde.push(this.validation.isEmpty(element.job));
+      arrValidationFilde.push(this.validation.isEmpty(element.from_year));
+      arrValidationFilde.push(this.validation.startDateIsGreater(element.from_year, element.to_year));
+    });
+
+    return arrValidationFilde.indexOf(true) >= 0 ? false : true;
+  }
+
+  public checkValidation(id: string, item: string, classCss: string = "borderError"): void {
+    if (this.validation.isEmpty(item)) {
+      document.getElementById(id)?.classList.add(classCss);
+    }
+    else document.getElementById(id)?.classList.remove(classCss);
   }
 }
