@@ -45,11 +45,17 @@ export class LinkComponent {
   }
 
   public checkValidation(id: string, item: string, classCss: string = "borderError"): void {
-
     if (this.validation.isEmpty(item)) {
-      document.getElementById(id)?.classList.add(classCss);
+      const nodeInput = document.getElementById(id)
+      nodeInput?.classList.add(classCss);
+      const errorNode = nodeInput?.parentNode?.parentNode;
+      errorNode?.lastElementChild?.insertAdjacentHTML('afterbegin','<p>*The field cannot be empty</p>')
     }
-    else document.getElementById(id)?.classList.remove(classCss);
+    else {
+      const nodeInput = document.getElementById(id)
+      nodeInput?.classList.remove(classCss);
+      nodeInput?.parentNode?.parentNode?.lastElementChild?.firstChild?.remove();
+    }
   }
 
 }

@@ -46,13 +46,12 @@ export class ValidationService {
       const startDate=new Date(start);
       const endDate=new Date(end);
       if (startDate.getTime() >= endDate.getTime()) {
-        console.log(">=")
         return true;
       }
       else return false;
     }
     else {
-      if (start!=null && end == null) return false;
+      if (start!=null && end == "") return false;
       else return true;
     }
 

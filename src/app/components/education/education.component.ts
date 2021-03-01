@@ -57,7 +57,7 @@ export class EducationComponent {
       this.errorMess = "";
     }
     else {
-      this.errorMess = "Fields cannot be empty: 'Specialization', 'Start of studies', 'Education' ";
+      this.errorMess = "*Fields cannot be empty: 'Last job place', 'Start work', 'Position'. Start date must be earlier than end date ";
     }
   }
 
@@ -68,31 +68,60 @@ export class EducationComponent {
     arrValidationFilde.push(this.validation.isEmpty(this.name));
     arrValidationFilde.push(this.validation.isEmpty(this.specialization));
     arrValidationFilde.push(this.validation.isEmpty(this.from_year));
-    arrValidationFilde.push(!this.validation.startDateIsGreater(this.from_year, this.to_year));
+    arrValidationFilde.push(this.validation.startDateIsGreater(this.from_year, this.to_year));
     return arrValidationFilde.indexOf(true) >= 0 ? false : true;
   }
 
   public checkValidation(id: string, item: string, classCss: string = "borderError"): void {
     if (this.validation.isEmpty(item)) {
-      document.getElementById(id)?.classList.add(classCss);
+      const nodeInput = document.getElementById(id)
+      nodeInput?.classList.add(classCss);
+      const errorNode = nodeInput?.parentNode?.parentNode;
+      errorNode?.lastElementChild?.insertAdjacentHTML('afterbegin', '<p>*The field cannot be empty</p>')
     }
-    else document.getElementById(id)?.classList.remove(classCss);
+    else {
+      const nodeInput = document.getElementById(id)
+      nodeInput?.classList.remove(classCss);
+      nodeInput?.parentNode?.parentNode?.lastElementChild?.firstChild?.remove();
+    }
   }
 
   public checkFromDate(id: string, start: string, end: string, classCss: string = "borderError"): void {
     if (this.validation.startDateIsGreater(start, end) || this.validation.isEmpty(start)) {
-      document.getElementById(id)?.classList.add(classCss);
+      const nodeInput = document.getElementById(id)
+      if (!nodeInput?.classList.contains(classCss)) {
+        nodeInput?.classList.add(classCss);
+        const errorNode = nodeInput?.parentNode?.parentNode;
+        errorNode?.lastElementChild?.insertAdjacentHTML('afterbegin', '<p>*The field cannot be empty and start date must be earlier than end date</p>')
+      }
     }
-    else document.getElementById(id)?.classList.remove(classCss);
+    else {
+      const nodeInput = document.getElementById(id)
+      nodeInput?.classList.remove(classCss);
+      nodeInput?.parentNode?.parentNode?.lastElementChild?.firstChild?.remove();
+    }
   }
 
   public checkToDate(id: string, start: string, end: string, classCss: string = "borderError"): void {
     if (end != "" && end != null) {
       if (this.validation.startDateIsGreater(start, end)) {
-        document.getElementById(id)?.classList.add(classCss);
+        const nodeInput = document.getElementById(id)
+        if (!nodeInput?.classList.contains(classCss)) {
+          nodeInput?.classList.add(classCss);
+          const errorNode = nodeInput?.parentNode?.parentNode;
+          errorNode?.lastElementChild?.insertAdjacentHTML('afterbegin', '<p>*The start date must be earlier than end date</p>')
+        }
       }
-      else document.getElementById(id)?.classList.remove(classCss);
+      else {
+        const nodeInput = document.getElementById(id)
+        nodeInput?.classList.remove(classCss);
+        nodeInput?.parentNode?.parentNode?.lastElementChild?.firstChild?.remove();
+      }
     }
-    else document.getElementById(id)?.classList.remove(classCss);
+    else {
+      const nodeInput = document.getElementById(id)
+      nodeInput?.classList.remove(classCss);
+      nodeInput?.parentNode?.parentNode?.lastElementChild?.firstChild?.remove();
+    }
   }
 }

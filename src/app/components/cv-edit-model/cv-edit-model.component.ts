@@ -15,7 +15,7 @@ const defaulteImg = "../../../assets/img/png-transparent-computer-icons-user-pro
   styleUrls: ['./cv-edit-model.component.scss']
 })
 export class CvEditModelComponent implements OnInit {
-  public errorMess = "";
+  public errorMess: Array<string> = ["the field cannot be empty"];
   public user = new User();
   public files: File[] = [];
   public returnImg = "";
@@ -51,10 +51,6 @@ export class CvEditModelComponent implements OnInit {
   }
 
   private loadUser(): void {
-
-    this.user.setTESTdata();
-    this.cutTime(this.user.education, /T.+Z/)
-    this.cutTime(this.user.jobs, /T.+Z/)
     const localUser = this.storage.getLocalStorage();
     if (localUser != null) {
 
@@ -233,8 +229,15 @@ export class CvEditModelComponent implements OnInit {
 
   public checkValidation(id: string, item: string, classCss: string = "borderError"): void {
     if (this.validation.isEmpty(item)) {
-      document.getElementById(id)?.classList.add(classCss);
+      const nodeInput = document.getElementById(id)
+      nodeInput?.classList.add(classCss);
+      const errorNode = nodeInput?.parentNode?.parentNode;
+      errorNode?.lastElementChild?.insertAdjacentHTML('afterbegin','<p>*The field cannot be empty</p>')
     }
-    else document.getElementById(id)?.classList.remove(classCss);
+    else {
+      const nodeInput = document.getElementById(id)
+      nodeInput?.classList.remove(classCss);
+      nodeInput?.parentNode?.parentNode?.lastElementChild?.firstChild?.remove();
+    }
   }
 }
