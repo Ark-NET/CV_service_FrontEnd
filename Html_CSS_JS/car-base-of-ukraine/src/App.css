@@ -1,0 +1,67 @@
+body {
+  background-image: url("./images/12004aeHKGTsBDzmPFOMjfQkXE.jpg");
+  min-width: 893px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.Page {
+  color: white;
+}
+
+.Page #errr {
+  color: red;
+}
+
+.Page .searchNumberInfo div {
+  margin: 5px;
+}
+
+.Page .formMake div {
+  margin: 5px;
+}
+
+.Page img {
+  width: 300px;
+  height: 250px;
+}
+
+.Page #carNumberForm div {
+  margin: 5px;
+}
+
+.Page .searchNumberInfo {
+  display: flex;
+}
+
+.Page .searchNumberInfo div {
+  width: fit-content;
+}
+
+.Page .infoNumber .info {
+  display: flex;
+}
+
+.Page .infoNumber .info div {
+  width: fit-content;
+  margin: 4px;
+}
+
+.Page .infoMark {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Page .infoMark .markInfo div {
+  width: 100%;
+}
+
+.Page .infoMark div {
+  margin: 20px;
+  width: 30%;
+}
+
+.Page .infoModel .modelInfo {
+  display: flex;
+  flex-wrap: wrap;
+}
