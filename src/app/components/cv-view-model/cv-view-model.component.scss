@@ -3,65 +3,29 @@
     padding: 0;
 }
 
-.background_threme1{
+.body{
+    width: 100%;
+    min-width: 425px;
     
-    width: 500px;
-    height: 500px;
-    z-index: 0;
-    transform: rotate(60deg);
-    -moz-transform: rotate(60deg); 
-    -ms-transform: rotate(60deg); 
-    -webkit-transform: rotate(60deg);
-    -o-transform: rotate(60deg);
-    background-color: #a9a9a9;
-    filter: drop-shadow(0 0 5px #000); 
-}
+    display: flex;
+    justify-content: center;
+    background-color: #ece4e4;
 
-.background_threme2{
-   
-    width: 500px;
-    height: 500px;
-    z-index: 1;
-    transform: rotate(30deg);
-    -moz-transform: rotate(30deg); 
-    -ms-transform: rotate(30deg); 
-    -webkit-transform: rotate(30deg);
-    -o-transform: rotate(30deg);
-    background-color: #e7e5e5;
-    filter: drop-shadow(0 0 5px #000); 
-}
-
-.background_threme3{
-    
-    width: 500px;
-    height: 500px;
-    z-index: 2;
-    transform: rotate(5deg);
-    -moz-transform: rotate(5deg); 
-    -ms-transform: rotate(5deg); 
-    -webkit-transform: rotate(5deg);
-    -o-transform: rotate(5deg);
-    background-color: #7c7c7c;
-    filter: drop-shadow(0 0 5px #000); 
 }
 
 .A4list{
-    width: 80%;
-    min-width: 480px;
-    top: 0;
-    left: 0;
-    margin: 5% 0 0 15%;
-    position: absolute;
-    background-color: white;
+    justify-content: center;
+    width: 95%;
+    background-color: #eeeeee;
     border-left: solid 1px silver;
-   border-bottom: silver solid 1px;
-   filter: drop-shadow(0 0 5px #000); 
+    border-bottom: silver solid 1px;
+    margin: 50px 0;
+    box-shadow: silver 0 0 20px;
     
     .photo_block{
         width: 250px;
         height: 250px;
-        float: right;
-        margin: 20px 20px 0 0;
+        margin: 40px;
         
         img{
             border-radius: 150px;
@@ -69,7 +33,7 @@
     }
 
     .user_information{
-        float: left;
+       
        
         width: 70%;
         margin: 70px 0 80px 20px;
@@ -92,40 +56,17 @@
         }
     }
 
-    .all_information{
-        
+    .education, .jobs{
         width: 100%;
-        border-top: #d4d4d4 solid 3px;
+        padding: 10px 0;
+        text-align:center;
+        border-top: silver solid 1px;
+    }
 
-        .education_job{
-            width: 100%;
-            margin: 70px 0 0 0;
-            border: black 2px solid;
-            
 
-            .education{
-               
-               width: 50%;
-               border: black 2px solid;
-                svg{
-                    width: 30px;
-                    height: 30px;
-                    color: #7c7c7c; 
-                 }
-            }
-            
-            .job{
-               
-                width: 50%;
-                border: black 2px solid;
-                svg{
-                   
-                   width: 30px;
-                   height: 30px;
-                   color: #7c7c7c; 
-                }
-            }
-        }
+    svg{
+        width: 50px;
+        height: 50px;
     }
 }
 
